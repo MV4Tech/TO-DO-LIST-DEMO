@@ -1,5 +1,6 @@
 package com.example.todolist.task.model;
 
+import com.example.todolist.user.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,9 @@ public class Task {
     private Date endDate;
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private User user;
 
 
 
