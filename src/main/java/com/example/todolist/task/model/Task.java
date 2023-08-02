@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @Table(name = "TASK")
-@ToString(exclude = "user")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +32,4 @@ public class Task {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
-
-
-
 }
