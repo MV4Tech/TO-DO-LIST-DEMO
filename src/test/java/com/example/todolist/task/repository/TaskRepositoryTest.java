@@ -17,9 +17,9 @@ class TaskRepositoryTest {
     @Test
     public void saveTask(){
         User user = User.builder()
-                .username("Stefko")
+                .username("Goshko")
                 .password("12345")
-                .email("abv@abv.bg")
+                .email("wasd@abv.bg")
                 .role("Admin")
                 .createdDate(LocalDateTime.now())
                 .build();
@@ -39,7 +39,7 @@ class TaskRepositoryTest {
     }
     @Test
     public void getTaskById(){
-        Optional<Task> task = taskRepository.findById(9);
+       Optional<Task> task = taskRepository.findById(11);
 
         System.out.println("task = " + task);
     }
@@ -51,14 +51,14 @@ class TaskRepositoryTest {
     }
     @Test
     public void deleteTaskById(){
-        taskRepository.deleteById(7);
+        taskRepository.deleteById(13);
     }
     @Test
     public void updateTask(){
 
         Task task = taskRepository.findById(9).get();
 
-        task.setPriority(6);
+        task.setPriority(8);
 
         taskRepository.save(task);
 
