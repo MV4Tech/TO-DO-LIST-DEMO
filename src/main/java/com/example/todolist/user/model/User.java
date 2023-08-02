@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Builder
 @Table(name="USER")
+@ToString(exclude = "task")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,9 +34,9 @@ public class User {
     private String role;
 
     @Column(name="CREATED_DATE")
-    private Date createdDate;
+    private LocalDateTime createdDate;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
     private List<Task> task;
 
 }

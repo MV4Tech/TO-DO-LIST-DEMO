@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -27,9 +28,9 @@ public class Task {
     @Column(name = "PRIORITY")
     private int priority;
     @Column(name = "START_DATE")
-    private Date startDate;
+    private LocalDateTime startDate;
     @Column(name = "END_DATE")
-    private Date endDate;
+    private LocalDateTime endDate;
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
     @ManyToOne
