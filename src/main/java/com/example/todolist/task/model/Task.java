@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @Table(name = "TASK")
-@ToString(exclude = "user")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

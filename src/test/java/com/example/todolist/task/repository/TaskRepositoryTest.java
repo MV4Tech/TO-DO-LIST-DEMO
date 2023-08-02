@@ -38,13 +38,32 @@ class TaskRepositoryTest {
 
     }
     @Test
-    public void getTask(){
-        Optional<Task> task = taskRepository.findById(9L);
+    public void getTaskById(){
+        Optional<Task> task = taskRepository.findById(9);
 
         System.out.println("task = " + task);
-        
-        
+    }
+    @Test
+    public void getAllTasks(){
+        List<Task> tasks = taskRepository.findAll();
+
+        System.out.println("tasks = " + tasks);
+    }
+    @Test
+    public void deleteTaskById(){
+        taskRepository.deleteById(7);
+    }
+    @Test
+    public void updateTask(){
+
+        Task task = taskRepository.findById(9).get();
+
+        task.setPriority(6);
+
+        taskRepository.save(task);
 
     }
+
+
 
 }
