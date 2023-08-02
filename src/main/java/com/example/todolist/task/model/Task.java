@@ -2,13 +2,9 @@ package com.example.todolist.task.model;
 
 import com.example.todolist.user.model.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +12,7 @@ import java.util.Date;
 @Builder
 @Entity
 @Table(name = "TASK")
+@ToString(exclude = "user")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +30,7 @@ public class Task {
     private LocalDateTime endDate;
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
