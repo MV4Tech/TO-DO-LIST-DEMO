@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 @SpringBootTest
@@ -20,35 +21,12 @@ class UserRepositoryTest {
     @Test
     public void saveUser() {
 
-
-        // LocalDateTime date = LocalDateTime.now();
-
-        Task taskChupq = Task.builder()
-                .topic("Machkai")
-                .description("Da shcupq glavata na tozi koito se prae na mno utoren")
-                .priority(2)
-                .startDate(LocalDateTime.now())
-                .endDate(LocalDateTime.now())
-                .isActive(true)
-                .build();
-
-        Task taskSmaja = Task.builder()
-                .topic("Machkai")
-                .description("Da smaja glavata na tozi koito se prae na mno utoren")
-                .priority(3)
-                .startDate(LocalDateTime.now())
-                .endDate(LocalDateTime.now())
-                .isActive(true)
-                .build();
-
-
         User user = User.builder()
-                .username("VanqDjaferovich")
-                .password("123")
-                .email("vania@dst.bg")
-                .role("ADMIN")
+                .username("Debeliq")
+                .password("1233")
+                .email("Debel@dst.bg")
+                .role("USER")
                 .createdDate(LocalDateTime.now())
-                .task(List.of(taskChupq,taskSmaja))
                 .build();
 
         userRepository.save(user);
@@ -59,6 +37,30 @@ class UserRepositoryTest {
     public void printAllUsers(){
         List<User> users = userRepository.findAll();
         System.out.println("Users : " + users);
+    }
+
+    // print user by id
+    @Test
+    public void printUserById(){
+        Optional<User> user = userRepository.findById(4);
+        System.out.println("user = " + user);
+    }
+
+    //update user
+    @Test
+    public void updateUserById(){
+        User user = userRepository.findById(4).get();
+        user.setUsername("Myrkata");
+        user.setPassword("444");
+        user.setEmail("mmm@abv.bg");
+        user.setCreatedDate(LocalDateTime.now());
+        userRepository.save(user);
+    }
+
+    // delete user
+@Test
+    public void deleteUserById(){
+        userRepository.deleteById(13);
     }
 
 }
