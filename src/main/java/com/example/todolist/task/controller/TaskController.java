@@ -1,6 +1,5 @@
 package com.example.todolist.task.controller;
 
-import com.example.todolist.task.exception.ApiRequestException;
 import com.example.todolist.task.model.Task;
 import com.example.todolist.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class TaskController {
        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/get-task/{id}")
-    public ResponseEntity<Task> getTask(@PathVariable("id") int id) throws ApiRequestException {
+    public ResponseEntity<Task> getTask(@PathVariable("id") int id){
         return new ResponseEntity<>(taskService.getTask(id),HttpStatus.OK);
     }
     @GetMapping("/get-all-tasks")

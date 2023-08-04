@@ -1,6 +1,4 @@
 package com.example.todolist.task.service;
-
-import com.example.todolist.task.exception.ApiRequestException;
 import com.example.todolist.task.model.Task;
 
 import java.util.List;
@@ -8,7 +6,7 @@ import java.util.List;
 public interface TaskService {
     public void saveTask(Task task);
 
-    public Task getTask(int id) throws ApiRequestException;
+    public Task getTask(int id);
 
     public List<Task> getAllTasks();
 

@@ -1,4 +1,4 @@
-package com.example.todolist.user.exception;
+package com.example.todolist.exception;
 
 public class ApiRequestException extends RuntimeException{
 

@@ -1,6 +1,6 @@
 package com.example.todolist.task.service;
 
-import com.example.todolist.task.exception.ApiRequestException;
+import com.example.todolist.exception.ApiRequestException;
 import com.example.todolist.task.model.Task;
 import com.example.todolist.task.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getTask(int id) throws ApiRequestException {
+    public Task getTask(int id) {
         Optional<Task> task = taskRepository.findById(id);
 
         if(!task.isPresent()){
