@@ -22,9 +22,9 @@ class UserRepositoryTest {
     public void saveUser() {
 
         User user = User.builder()
-                .username("Debeliq")
+                .username("DDDD")
                 .password("1233")
-                .email("Debel@dst.bg")
+                .email("DDDD@dst.bg")
                 .role("USER")
                 .createdDate(LocalDateTime.now())
                 .build();
@@ -42,17 +42,17 @@ class UserRepositoryTest {
     // print user by id
     @Test
     public void printUserById(){
-        Optional<User> user = userRepository.findById(4);
+        Optional<User> user = userRepository.findById(15);
         System.out.println("user = " + user);
     }
 
     //update user
     @Test
     public void updateUserById(){
-        User user = userRepository.findById(4).get();
-        user.setUsername("Myrkata");
-        user.setPassword("444");
-        user.setEmail("mmm@abv.bg");
+        User user = userRepository.findById(15).get();
+        user.setUsername("FFFF");
+        user.setPassword("FFFF");
+        user.setEmail("FFFF@abv.bg");
         user.setCreatedDate(LocalDateTime.now());
         userRepository.save(user);
     }
@@ -60,7 +60,7 @@ class UserRepositoryTest {
     // delete user
 @Test
     public void deleteUserById(){
-        userRepository.deleteById(13);
+        userRepository.deleteById(15);
     }
 
 }
