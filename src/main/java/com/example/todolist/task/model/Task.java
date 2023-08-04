@@ -1,6 +1,7 @@
 package com.example.todolist.task.model;
 
 import com.example.todolist.user.model.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,13 +24,15 @@ public class Task {
     private String description;
     @Column(name = "PRIORITY")
     private int priority;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "START_DATE")
     private LocalDateTime startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "END_DATE")
     private LocalDateTime endDate;
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 }
