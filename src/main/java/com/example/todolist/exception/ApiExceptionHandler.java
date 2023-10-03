@@ -35,6 +35,16 @@ public class ApiExceptionHandler {
 
 
 
+    @ExceptionHandler(value = {TasksNotFoundException.class})
+    ResponseEntity<Object> handleTasksNotFoundException(TasksNotFoundException e){
+        HttpStatus notFound = HttpStatus.NOT_FOUND;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                notFound,
+                ZonedDateTime.now()
+        );
+        return new ResponseEntity<>(apiException, notFound);
+    }
 
 
 
