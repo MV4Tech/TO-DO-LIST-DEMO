@@ -4,7 +4,7 @@ import com.example.todolist.task.model.Task;
 import java.util.List;
 
 public interface TaskService {
-    public void saveTask(Task task);
+    public Task saveTask(Task task);
 
     public Task getTask(int id);
 
