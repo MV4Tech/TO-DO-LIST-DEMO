@@ -1,5 +1,6 @@
 package com.example.todolist.user.controller;
 
+import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import com.example.todolist.user.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +42,7 @@ class UserControllerTest {
                         .password("333")
                         .email("aidede@Abv.bg")
                         .createdDate(LocalDateTime.now())
-                        .role("ADMIN")
+                        .role(Role.USER)
                         .build();
     }
 
@@ -53,7 +54,7 @@ class UserControllerTest {
                 .password("333")
                 .email("aidede@Abv.bg")
                 .createdDate(LocalDateTime.now())
-                .role("ADMIN")
+               .role(Role.USER)
                 .build();
 
         Mockito.when(userService.saveUser(inputUser)).thenReturn(user);
@@ -64,7 +65,7 @@ class UserControllerTest {
                         "    \"username\":\"Markicha\",\n" +
                         "    \"password\":\"333\",\n" +
                         "    \"email\": \"aidede@Abv.bg\",\n" +
-                        "    \"role\": \"ADMIN\",\n" +
+                        "    \"role\": \"USER\",\n" +
                         "    \"createdDate\":\"2002-03-05 14:23:11\"\n" +
                         "}"))
                 .andExpect(status().isCreated());
@@ -90,7 +91,7 @@ class UserControllerTest {
                .password("333")
                .email("aidede@Abv.bg")
                .createdDate(LocalDateTime.now())
-               .role("ADMIN")
+               .role(Role.USER)
                .build();
 
        Mockito.when(userService.getUserById(user.getId())).thenReturn(user);
@@ -102,7 +103,7 @@ class UserControllerTest {
                        "    \"username\":\"Markicha\",\n" +
                        "    \"password\":\"333\",\n" +
                        "    \"email\": \"aidede@Abv.bg\",\n" +
-                       "    \"role\": \"ADMIN\",\n" +
+                       "    \"role\": \"USER\",\n" +
                        "    \"createdDate\":\"2002-03-05 14:23:11\"\n" +
                        "}")).andExpect(status().isOk());
     }
@@ -126,7 +127,7 @@ class UserControllerTest {
                 .password("332")
                 .email("ADE@Abv.bg")
                 .createdDate(LocalDateTime.now())
-                .role("ADMIN")
+              .role(Role.USER)
                 .build();
 
       List<User> userList = List.of(user,user2);

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import com.example.todolist.user.model.Role;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -39,7 +40,7 @@ class UserRepositoryTest {
                 .password("587")
                 .email("bbb@abv.bg")
                 .createdDate(LocalDateTime.now())
-                .role("admin")
+                .role(Role.USER)
                 .build();
 
         //Act
@@ -63,7 +64,7 @@ class UserRepositoryTest {
                 .password("587")
                 .email("bbb@abv.bg")
                 .createdDate(LocalDateTime.now())
-                .role("admin")
+                .role(Role.USER)
                 .build();
         User u2 = User.builder()
                 .id(2)
@@ -71,7 +72,7 @@ class UserRepositoryTest {
                 .password("111")
                 .email("BoikoBorisov@abv.bg")
                 .createdDate(LocalDateTime.now())
-                .role("masterChef")
+                .role(Role.USER)
                 .build();
 
         userRepository.save(u1);
@@ -96,7 +97,7 @@ class UserRepositoryTest {
                 .password("587")
                 .email("dfgdfh@abv.bg")
                 .createdDate(LocalDateTime.now())
-                .role("admin")
+                .role(Role.USER)
                 .build();
         userRepository.save(u1);
 
@@ -120,7 +121,7 @@ class UserRepositoryTest {
                 .password("587")
                 .email("dfgdfh@abv.bg")
                 .createdDate(LocalDateTime.now())
-                .role("admin")
+                .role(Role.USER)
                 .build();
         userRepository.save(u1);
 
