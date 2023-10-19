@@ -1,5 +1,6 @@
 package com.example.todolist.user.service;
 
+import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import com.example.todolist.user.repository.UserRepository;
 import org.assertj.core.api.Assertions;
@@ -43,7 +44,7 @@ class UserServiceTest {
                         .password("333")
                         .email("aidede@Abv.bg")
                         .createdDate(LocalDateTime.now())
-                        .role("ADMIN")
+                        .role(Role.USER)
                         .build();
         User u2 =
                 User.builder()
@@ -52,7 +53,7 @@ class UserServiceTest {
                         .password("32")
                         .email("134@Abv.bg")
                         .createdDate(LocalDateTime.now())
-                        .role("ADMIN")
+                        .role(Role.USER)
                         .build();
 
         List<User> users = List.of(u1,u2);
@@ -77,7 +78,7 @@ class UserServiceTest {
                         .password("333")
                         .email("aidede@Abv.bg")
                         .createdDate(LocalDateTime.now())
-                        .role("ADMIN")
+                        .role(Role.USER)
                         .build();
 
         when(userRepository.findById(user.getId())).thenReturn(Optional.ofNullable(user));
@@ -97,7 +98,7 @@ class UserServiceTest {
                         .password("333")
                         .email("aidede@Abv.bg")
                         .createdDate(LocalDateTime.now())
-                        .role("ADMIN")
+                        .role(Role.USER)
                         .build();
 
         when(userRepository.findById(testUser.getId())).thenReturn(Optional.ofNullable(testUser));
@@ -123,7 +124,7 @@ class UserServiceTest {
                         .password("333")
                         .email("aidede@Abv.bg")
                         .createdDate(LocalDateTime.now())
-                        .role("ADMIN")
+                        .role(Role.USER)
                         .build();
 
         when(userRepository.findById(testUser.getId())).thenReturn(Optional.ofNullable(testUser));
