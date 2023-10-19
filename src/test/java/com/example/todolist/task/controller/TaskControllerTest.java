@@ -2,6 +2,7 @@ package com.example.todolist.task.controller;
 
 import com.example.todolist.task.model.Task;
 import com.example.todolist.task.service.TaskService;
+import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,7 +45,7 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg", Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -55,7 +56,7 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times Me")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -69,7 +70,7 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -132,7 +133,7 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("Yea Mu name is Gurko")
                 .priority(6)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
