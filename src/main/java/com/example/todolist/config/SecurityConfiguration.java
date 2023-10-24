@@ -50,15 +50,6 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
         }
-/*    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-    return httpSecurity
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/api/v1/auth/register", "/api/v1/auth/authenticate","/api/v1/demo-controller").permitAll()
-                    .anyRequest().authenticated()
-                 )
-                .build();
-         }*/
+
 
     }
