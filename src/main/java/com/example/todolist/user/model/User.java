@@ -1,6 +1,7 @@
 package com.example.todolist.user.model;
 
 import com.example.todolist.task.model.Task;
+import com.example.todolist.token.Token;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -37,6 +38,7 @@ public class User implements UserDetails {
     private String password;
 
 
+
     @Email(message = "Enter valid email")
     @Column(name= "EMAIL")
     private String email;
@@ -50,7 +52,8 @@ public class User implements UserDetails {
     @Column(name="CREATED_DATE")
     private LocalDateTime createdDate;
 
-
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
