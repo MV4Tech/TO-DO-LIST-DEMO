@@ -2,6 +2,7 @@ package com.example.todolist.task.service;
 
 import com.example.todolist.task.model.Task;
 import com.example.todolist.task.repository.TaskRepository;
+import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,7 +43,7 @@ class TaskServiceTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef",LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg", Role.USER,LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -53,7 +54,7 @@ class TaskServiceTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef",LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -85,7 +86,7 @@ class TaskServiceTest {
             .topic("Try")
             .description("I try so hard")
             .priority(1)
-            .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef",LocalDateTime.now()))
+            .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
             .isActive(true)
             .endDate(LocalDateTime.now())
             .startDate(LocalDateTime.now())
@@ -95,7 +96,7 @@ class TaskServiceTest {
             .topic("Try")
             .description("I try so hard")
             .priority(1)
-            .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef",LocalDateTime.now()))
+            .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
             .isActive(true)
             .endDate(LocalDateTime.now())
             .startDate(LocalDateTime.now())
@@ -132,7 +133,7 @@ class TaskServiceTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef",LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -154,7 +155,7 @@ class TaskServiceTest {
                     .topic("Try")
                     .description("I try so hard Many Times")
                     .priority(1)
-                    .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef",LocalDateTime.now()))
+                    .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
                     .isActive(true)
                     .endDate(LocalDateTime.now())
                     .startDate(LocalDateTime.now())

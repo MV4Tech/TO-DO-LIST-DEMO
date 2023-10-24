@@ -1,6 +1,7 @@
 package com.example.todolist.task.repository;
 
 import com.example.todolist.task.model.Task;
+import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import com.example.todolist.user.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -34,7 +35,7 @@ class TaskRepositoryTest {
                 .username("Ivancho")
                 .password("wasd")
                 .email("asd@abv.bg")
-                .role("shef")
+                .role(Role.USER)
                 .createdDate(LocalDateTime.now())
                 .build();
 
@@ -55,7 +56,7 @@ class TaskRepositoryTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(user.getId(), "Ivancho","wasd","asd@abv.bg","shef",user.getCreatedDate()))
+                .user(new User(user.getId(), "Ivancho","wasd","asd@abv.bg",Role.USER,user.getCreatedDate()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -76,7 +77,7 @@ class TaskRepositoryTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(user.getId(), "Ivancho","wasd","asd@abv.bg","shef",user.getCreatedDate()))
+                .user(new User(user.getId(), "Ivancho","wasd","asd@abv.bg",Role.USER,user.getCreatedDate()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -85,7 +86,7 @@ class TaskRepositoryTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(user.getId(), "Ivancho","wasd","asd@abv.bg","shef",user.getCreatedDate()))
+                .user(new User(user.getId(), "Ivancho","wasd","asd@abv.bg",Role.USER,user.getCreatedDate()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -108,7 +109,7 @@ class TaskRepositoryTest {
                 .username("Manqika")
                 .password("wasd")
                 .email("wasd@abv.bg")
-                .role("shef")
+                .role(Role.USER)
                 .createdDate(LocalDateTime.now())
                 .build();
 
@@ -118,7 +119,7 @@ class TaskRepositoryTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg","shef",user1.getCreatedDate()))
+                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg",Role.USER,user1.getCreatedDate()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -137,7 +138,7 @@ class TaskRepositoryTest {
                 .username("Manqika")
                 .password("wasd")
                 .email("wasd@abv.bg")
-                .role("shef")
+                .role(Role.USER)
                 .createdDate(LocalDateTime.now())
                 .build();
 
@@ -147,7 +148,7 @@ class TaskRepositoryTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg","shef",user1.getCreatedDate()))
+                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg",Role.USER,user1.getCreatedDate()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -169,7 +170,7 @@ class TaskRepositoryTest {
                 .username("Manqika")
                 .password("wasd")
                 .email("wasd@abv.bg")
-                .role("shef")
+                .role(Role.USER)
                 .createdDate(LocalDateTime.now())
                 .build();
 
@@ -179,7 +180,7 @@ class TaskRepositoryTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg","shef",user1.getCreatedDate()))
+                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg",Role.USER,user1.getCreatedDate()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -192,7 +193,7 @@ class TaskRepositoryTest {
                 .topic("Pich sum")
                 .description("I ain't try so hard")
                 .priority(1)
-                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg","shef",user1.getCreatedDate()))
+                .user(new User(user1.getId(), "Manqika","wasd","wasd@abv.bg",Role.USER,user1.getCreatedDate()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())

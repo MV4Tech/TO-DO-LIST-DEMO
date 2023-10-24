@@ -1,7 +1,9 @@
 package com.example.todolist.task.controller;
 
+import com.example.todolist.config.JwtService;
 import com.example.todolist.task.model.Task;
 import com.example.todolist.task.service.TaskService;
+import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -32,6 +35,8 @@ class TaskControllerTest {
 
     @MockBean
     private TaskService taskService;
+    @MockBean
+    private JwtService jwtService;
 
     private Task task;
     private Task task1;
@@ -44,7 +49,7 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg", Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -55,11 +60,12 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times Me")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
                 .build();
+
 
     }
 
@@ -69,14 +75,17 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
                 .build();
         Mockito.when(taskService.saveTask(inputTask)).thenReturn(task);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/TO-DO-LIST-DEMO/task/v1.0.0/save-task")
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/TO-DO-LIST-DEMO/task/v1.0.0/save-task")
+                        .with(SecurityMockMvcRequestPostProcessors.user(task.getUser().getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(" {\n" +
                         "        \"topic\": \"Try\",\n" +
@@ -98,6 +107,8 @@ class TaskControllerTest {
         Mockito.when(taskService.getTask(4)).thenReturn(task);
 
         mockMvc.perform(get("/TO-DO-LIST-DEMO/task/v1.0.0/get-task/4")
+                        .with(SecurityMockMvcRequestPostProcessors.user(task.getUser().getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.topic")
@@ -109,6 +120,8 @@ class TaskControllerTest {
     void getAllTasks() throws Exception {
         Mockito.when(taskService.getAllTasks()).thenReturn(Arrays.asList(task,task1));
         mockMvc.perform(get("/TO-DO-LIST-DEMO/task/v1.0.0/get-all-tasks")
+                        .with(SecurityMockMvcRequestPostProcessors.user(task.getUser().getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)));
@@ -120,6 +133,8 @@ class TaskControllerTest {
     @Test
     void deleteTask() throws Exception {
         mockMvc.perform(delete("/TO-DO-LIST-DEMO/task/v1.0.0/delete-task/4")
+                        .with(SecurityMockMvcRequestPostProcessors.user(task.getUser().getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
 
@@ -132,7 +147,7 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("Yea Mu name is Gurko")
                 .priority(6)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg","shef", LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -141,6 +156,8 @@ class TaskControllerTest {
         Mockito.when(taskService.updateTask(inputTask)).thenReturn(task);
 
         mockMvc.perform(put("/TO-DO-LIST-DEMO/task/v1.0.0/update-task")
+                        .with(SecurityMockMvcRequestPostProcessors.user(task.getUser().getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(" {\n" +
                         "        \"topic\": \"Try\",\n" +

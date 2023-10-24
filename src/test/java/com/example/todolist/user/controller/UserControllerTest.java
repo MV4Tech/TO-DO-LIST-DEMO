@@ -1,5 +1,6 @@
 package com.example.todolist.user.controller;
 
+import com.example.todolist.config.JwtService;
 import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import com.example.todolist.user.service.UserService;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -31,6 +33,8 @@ class UserControllerTest {
 
     @MockBean
     private UserService userService;
+    @MockBean
+    JwtService jwtService;
 
     private User user;
 
@@ -60,6 +64,8 @@ class UserControllerTest {
         Mockito.when(userService.saveUser(inputUser)).thenReturn(user);
 
         mockMvc.perform(post("/users/save-user")
+                        .with(SecurityMockMvcRequestPostProcessors.user(user.getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                 .content("{\n" +
                         "    \"username\":\"Markicha\",\n" +
@@ -77,6 +83,8 @@ class UserControllerTest {
         Mockito.when(userService.getUserById(user.getId())).thenReturn(user);
 
         mockMvc.perform(get("/users/get-user/1")
+                        .with(SecurityMockMvcRequestPostProcessors.user(user.getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.username")
@@ -98,6 +106,8 @@ class UserControllerTest {
        Mockito.when(userService.saveUser(inputUser)).thenReturn(user);
 
        mockMvc.perform(put("/users/update-user/1")
+               .with(SecurityMockMvcRequestPostProcessors.user(user.getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+               .with(SecurityMockMvcRequestPostProcessors.csrf())
                .contentType(MediaType.APPLICATION_JSON)
                .content("{\n" +
                        "    \"username\":\"Markicha\",\n" +
@@ -113,6 +123,8 @@ class UserControllerTest {
 
         Mockito.when(userService.getUserById(user.getId())).thenReturn(user);
         mockMvc.perform(delete("/users/delete-user/1")
+                        .with(SecurityMockMvcRequestPostProcessors.user(user.getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                        .with(SecurityMockMvcRequestPostProcessors.csrf())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
 
@@ -134,6 +146,8 @@ class UserControllerTest {
       Mockito.when(userService.getAllUsers()).thenReturn(userList);
 
       mockMvc.perform(get("/users")
+                      .with(SecurityMockMvcRequestPostProcessors.user(user.getUsername()).roles(Role.USER.toString(),Role.ADMIN.toString()))
+                      .with(SecurityMockMvcRequestPostProcessors.csrf())
               .contentType(MediaType.APPLICATION_JSON))
               .andExpect(status().isOk());
 
