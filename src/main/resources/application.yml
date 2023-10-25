@@ -22,3 +22,10 @@ server:
   port: 8080
 
 
+application:
+  security:
+    jwt:
+      secret-key: GhzUBdHjLZggyiOgo0WjgXc+ppTLf9byKLXW8J5VmOJHD2pXjHIXDyVBJprkSETO
+      expiration: 86400000 # day
+      refresh-token:
+        expiration: 604800000 # 7 days
