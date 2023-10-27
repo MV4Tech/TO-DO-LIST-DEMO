@@ -7,12 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/TO-DO-LIST-DEMO/task/v1.0.0")
+@RequestMapping("/api/v1/task")
 public class TaskController {
     @Autowired
     private TaskService taskService;
@@ -20,6 +21,7 @@ public class TaskController {
     private static final Logger logger = LoggerFactory.getLogger(TaskController.class);
 
     @PostMapping("/save-task")
+    @PreAuthorize("hasAuthority('task:create')")
     public ResponseEntity<Void> saveTask(@RequestBody Task task){
         logger.info("Saving task : {}",task);
         taskService.saveTask(task);
@@ -27,6 +29,7 @@ public class TaskController {
        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/get-task/{id}")
+    @PreAuthorize("hasAuthority('task:read')")
     public ResponseEntity<Task> getTask(@PathVariable("id") int id){
         logger.info("Fetching task with ID : {}", id);
         Task task = taskService.getTask(id);
@@ -34,6 +37,7 @@ public class TaskController {
         return new ResponseEntity<>(task,HttpStatus.OK);
     }
     @GetMapping("/get-all-tasks")
+    @PreAuthorize("hasAuthority('task:read')")
     public ResponseEntity<List<Task>> getAllTasks(){
         logger.info("Getting All Tasks : {}");
         List<Task> tasks = taskService.getAllTasks();
@@ -42,6 +46,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/delete-task/{id}")
+    @PreAuthorize("hasAuthority('task:delete')")
     public ResponseEntity<Void> deleteTask(@PathVariable("id") int id){
         logger.info("Deleting task with id  : {}", id);
         taskService.deleteTask(id);
@@ -51,6 +56,7 @@ public class TaskController {
     }
 
     @PutMapping("/update-task")
+    @PreAuthorize("hasAuthority('task:update')")
     public ResponseEntity<Task> updateTask(@RequestBody Task task){
 
         logger.info("Updating task with ID : {}", task.getId());
