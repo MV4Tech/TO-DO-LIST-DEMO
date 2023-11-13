@@ -11,7 +11,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://192.168.1.3:3306/tododb
+   # url: jdbc:mysql://192.168.1.3:3306/tododb
+    url: jdbc:mysql://192.168.1.10:3306/tododb
+
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,6 +28,7 @@ application:
   security:
     jwt:
       secret-key: GhzUBdHjLZggyiOgo0WjgXc+ppTLf9byKLXW8J5VmOJHD2pXjHIXDyVBJprkSETO
-      expiration: 86400000 # day
+      #expiration:  86400000 # day
+      expiration: 300000  # 5 minutes in milliseconds
       refresh-token:
         expiration: 604800000 # 7 days
