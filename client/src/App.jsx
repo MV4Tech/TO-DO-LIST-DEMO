@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import {
   createBrowserRouter,
@@ -24,9 +23,9 @@ const App = createBrowserRouter(
             <Route path="login" element={<Login />} />
           </Route>
         </Route>
-        <Route element={<AuthGuardWhenLogin />}>
+         {/* <Route element={<AuthGuardWhenLogin />}>*/}
           <Route path="dashboard" element={<Dashboard />} />
-        </Route>
+        {/*</Route>*/}
     </>
   )
 );
