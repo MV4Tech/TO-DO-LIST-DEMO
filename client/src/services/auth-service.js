@@ -21,7 +21,15 @@ class AuthService extends WebApiService {
     storageService.saveTokenExpiresDate(currentDate);
   }
 
-  async makeRegisterRequest(firstName, lastName, email, password) {}
+  async makeRegisterRequest(user) {
+
+      const response = await axios.post(SERVER_URL+"api/v1/auth/register",user);
+
+      if(response.status != 200){
+        throw "Error: "+ response.data;
+      }
+
+  }
 
   async renewToken() {
     let response = await axios.post(

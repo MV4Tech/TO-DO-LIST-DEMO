@@ -114,11 +114,12 @@ public class AuthenticationService {
 
             if(jwtService.isTokenValid(refreshToken,user)){
                 var accessToken = jwtService.generateToken(user);
+                var newRefreshToken = jwtService.generateRefreshToken(user);
                 revokedAllUserTokens(user);
                 savedUserToken(user, accessToken);
                 var authResponse = AuthenticationResponse.builder()
                         .accessToken(accessToken)
-                        .refreshToken(refreshToken)
+                        .refreshToken(newRefreshToken)
                         .build();
                 new ObjectMapper().writeValue(response.getOutputStream(),authResponse);
             }
