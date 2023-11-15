@@ -102,16 +102,17 @@ input[type="submit"] {
 }
 /* Change button background color and add a scale effect on hover */
 input[type="submit"]:hover {
-    background-color: #000; /* Change background color on hover */
+    background-color: #000000; /* Change background color on hover */
     transform: scale(1.05); /* Slight scale increase on hover */
 }
 /* Style the sign-in link */
 .input-container a {
-    
     color: #373535; /* Change link color */
     font-weight: bold; /* Make the text bold */
     margin-right: 0px; /* Add some spacing to the right of the link */
     transition: color 0.5s; /* Add a color transition effect */
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* Change link color on hover */
