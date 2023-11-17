@@ -1,0 +1,10 @@
+
+
+  .project-list > tbody > tr > td {
+    padding: 12px 8px;
+  }
+  
+  .project-list > tbody > tr > td .avatar {
+    width: 22px;
+    border: 1px solid #CCC;
+  }
