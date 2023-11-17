@@ -1,6 +1,9 @@
 package com.example.todolist.auth;
 
 import com.example.todolist.config.JwtService;
+import com.example.todolist.exception.DuplicateEmailException;
+import com.example.todolist.exception.DuplicateUsernameException;
+import com.example.todolist.exception.InvalidCredentialsException;
 import com.example.todolist.exception.UsersNotFoundException;
 import com.example.todolist.token.Token;
 import com.example.todolist.token.TokenRepository;
@@ -13,7 +16,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +27,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.http.HttpHeaders;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 
 @Service
@@ -38,41 +44,62 @@ public class AuthenticationService {
     private TokenRepository tokenRepository;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
-                .username(request.getUsername())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .createdDate(LocalDateTime.now())
-                .role(request.getRole())
-                .build();
-       var savedUser = userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
-        savedUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder()
-                .accessToken(jwtToken)
-                .refreshToken(refreshToken)
-                .build();
+
+        if(userRepository.existsByUsername(request.getUsername())){
+            throw new DuplicateUsernameException("The username has already been taken.");
+        }
+
+        if(userRepository.existsByEmail(request.getEmail())) {
+            throw new DuplicateEmailException("The email has already been taken.");
+        }
+
+
+            var user = User.builder()
+                    .username(request.getUsername())
+                    .email(request.getEmail())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .createdDate(LocalDateTime.now())
+                    .role(request.getRole())
+                    .build();
+
+            var savedUser = userRepository.save(user);
+            var jwtToken = jwtService.generateToken(user);
+            var refreshToken = jwtService.generateRefreshToken(user);
+            savedUserToken(savedUser, jwtToken);
+            return AuthenticationResponse.builder()
+                    .accessToken(jwtToken)
+                    .refreshToken(refreshToken)
+                    .build();
+
+
+
     }
 
 
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
-                )
-        );
-        var user = userRepository.findByUsername(request.getUsername()).orElseThrow(() -> new UsersNotFoundException("User Doesn't Exists"));
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
-        revokedAllUserTokens(user);
-        savedUserToken(user, jwtToken);
+
+        try{
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getUsername(),
+                            request.getPassword()
+                    )
+            );
+            var user = userRepository.findByUsername(request.getUsername()).orElseThrow(() -> new UsersNotFoundException("User Doesn't Exists"));
+            var jwtToken = jwtService.generateToken(user);
+            var refreshToken = jwtService.generateRefreshToken(user);
+            revokedAllUserTokens(user);
+            savedUserToken(user, jwtToken);
             return AuthenticationResponse.builder()
                     .accessToken(jwtToken)
                     .refreshToken(refreshToken)
                     .build();
+        }catch (BadCredentialsException e){
+            throw new InvalidCredentialsException("Invalid username or password!");
+        }
+
+
     }
     private void savedUserToken(User user, String jwtToken) {
         var token = Token.builder()

@@ -12,6 +12,7 @@ import AuthGuardWhenLogin from './components/AuthGuardWhenLogin';
 import Register from './pages/register';
 import Login from './pages/login';
 import Dashboard from './pages/dashboard';
+import RegisterForm from './pages/RegisterForm';
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const App = createBrowserRouter(
             <Route index element={<Home />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
+            <Route path="registerForm" element={<RegisterForm />} />
           </Route>
         </Route>
          {/* <Route element={<AuthGuardWhenLogin />}>*/}
