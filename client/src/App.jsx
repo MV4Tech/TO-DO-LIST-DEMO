@@ -11,8 +11,9 @@ import AuthGuardWhenLogout from './components/AuthGuardWhenLogout';
 import AuthGuardWhenLogin from './components/AuthGuardWhenLogin';
 import Register from './pages/register';
 import Login from './pages/login';
-import Dashboard from './pages/dashboard';
+
 import RegisterForm from './pages/RegisterForm';
+import Dashboard from './pages/dashboard/dashboard';
 
 const App = createBrowserRouter(
   createRoutesFromElements(
