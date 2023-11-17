@@ -1,71 +1,76 @@
 import React from "react";
-import storageService from "../services/storage-service";
-import { useNavigate } from "react-router-dom";
-import "../styles/dashboard.css"
+import { Link, useNavigate } from "react-router-dom";
+import 'D:/git-to-do/to-do-list/client/src/styles/dashboard.css'
 
 
-const Dashboard = () => {
+
+const Header = () => {
     const navigate = useNavigate();
+
+    
+
   return (
-    <>
-      <div>Dashboard</div>
-      <button onClick={() => {
-        storageService.deleteUserData();
-        navigate("/");
-      }}>Log out</button>
+    <>    
         <link
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
       />
+
+
       <header className="masthead">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-7 py-5">
               <h1 className="mb-4">
-                Bootstrap themes, templates, and more to help you start your next
-                project!
+                Best To Do List in Town! Start now for free!
               </h1>
               <h2 className="m-0">
-                Start Bootstrap creates free, open source, MIT license, Bootstrap{" "}
-                <a href="#">themes</a>, <a href="#">templates</a>, and{" "}
-                <a href="#">code snippets</a> for you to use on any project,{" "}
-                <a href="#">guides</a> to help you learn more about designing and
-                developing with the Bootstrap framework, and premium Bootstrap
-                products.
+                Are you ready to be organized. If your answer is YES.<br></br>
+                Start today, do not hesitate.<br></br>
+                Simply Awesome!<br></br>
+                For each upcoming month, it's just $3.99.
+                
               </h2>
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-5 ">
+              <div className="position-absolute top-0 end-0 p-3">
+                <button onClick={() => {
+                  storageService.deleteUserData();
+                  navigate("/");
+                  }}>Log out</button>
+              </div>
+            
               <div className="py-5 px-4 masthead-cards">
                 <div className="d-flex">
-                  <a href="#" className="w-50 pr-3 pb-4 p-2">
+                  <a onClick={()=> {navigate("/createTask")}} className="w-50 pr-3 pb-4 p-2">
                     <div className="card border-0 border-bottom-red shadow-lg shadow-hover ">
                       <div className="card-body text-center ">
-                        <div className="text-center">
+                        <div className="text-center">    
                           <i className="fa fa-pencil fa-4x my-2"></i>
                         </div>
                         Create Task
                       </div>
                     </div>
                   </a>
-                  <a href="#" className="w-50 pl-3 pb-4 p-2">
+                  <a href="#"  className="w-50 pl-3 pb-4 p-2">
                     <div className="card border-0 border-bottom-blue shadow-lg shadow-hover">
                       <div className="card-body text-center">
                         <div className="text-center">
                           <i className="fa fa-th fa-4x my-2"></i>
                         </div>
-                        Templates
+                        Profile
                       </div>
                     </div>
                   </a>
                 </div>
                 <div className="d-flex">
-                  <a href="#" className="w-50 pr-3 p-2">
+                  <a href="#"  className="w-50 pr-3 p-2">
                     <div className="card border-0 border-bottom-yellow shadow-lg shadow-hover">
                       <div className="card-body text-center">
                         <div className="text-center">
                           <i className="fa fa-4x fa-code my-2"></i>
                         </div>
-                        Snippets
+                        DEVS
                       </div>
                     </div>
                   </a>
@@ -152,4 +157,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Header;
