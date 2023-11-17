@@ -53,6 +53,40 @@ public class ApiExceptionHandler {
         );
         return new ResponseEntity<>(apiException, notFound);
     }
+    @ExceptionHandler(value = {DuplicateUsernameException.class})
+    ResponseEntity<Object> handleDuplicateUsernameException(DuplicateUsernameException e){
+        logger.error("DUPLICATE USERNAME request exception occurred: {}", e.getMessage(),e);
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now()
+        );
+        return new ResponseEntity<>(apiException, badRequest);
+    }
+    @ExceptionHandler(value = {DuplicateEmailException.class})
+    ResponseEntity<Object> handleDuplicateEmailException(DuplicateEmailException e){
+        logger.error("DUPLICATE EMAIL request exception occurred: {}", e.getMessage(),e);
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now()
+        );
+        return new ResponseEntity<>(apiException, badRequest);
+    }
+    @ExceptionHandler(value = {InvalidCredentialsException.class})
+    ResponseEntity<Object> handleInvalidCredentialsException(InvalidCredentialsException e){
+        logger.error("INVALID CREDENTIALS request exception occurred: {}", e.getMessage(),e);
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now()
+        );
+        return new ResponseEntity<>(apiException, badRequest);
+
+    }
 
 
 

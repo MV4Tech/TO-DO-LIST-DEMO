@@ -11,7 +11,7 @@ class AuthService extends WebApiService {
     });
 
     if (response.status != 200) {
-      throw "Error: " + response.data;
+      throw "Error: " + response.data.message;
     }
 
     storageService.saveAccessToken(response.data.access_token);

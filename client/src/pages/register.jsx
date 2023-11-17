@@ -14,8 +14,9 @@ const Register = () => {
         email:"",
         role:"USER"
     })
-    const [confirmPassword, setConfirmPassword,] = useState("")
+    const [confirmPassword, setConfirmPassword,] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const [duplicateUsernameOrEmailMessage, setDuplicateUsernameOrEmailMessage] = useState(null);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -26,74 +27,108 @@ const Register = () => {
 
     const saveUser = async (e) => {
         e.preventDefault();
-        if(confirmPassword == user.password){
+        if(confirmPassword != user.password){
+            // Passwords don't match
+            setPasswordError('Passwords do not match');
+            return;
+        }else
+        setPasswordError(null);
+        
            await authService.makeRegisterRequest(user)
             .then((response) => {
                 console.log(response);
                 navigate("/login")
             }).catch((error) => {
-                console.log(error);
+                setDuplicateUsernameOrEmailMessage(error.response.data.message);
             })
-        }
-            // Passwords don't match
-            setPasswordError('Passwords do not match');
+        
+            
     }
 
 
 
   return (
-    <div className="css-grid">
-        <div className="header-text">
-            <h1 className="sign">    </h1>
-        </div>
-        <div className="login-menu">
-            <div className="image-register-grid">
-                <div className="image-container">
-                    <img className="login_image" src={Choveka} alt="Choveka" />
-                </div>
-                <div className="actual-login">
+    <section className="vh-100" >
+      <div className="container h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col-lg-12 col-xl-11">
+            <div className="card text-black" style={{ borderRadius: '25px' }}>
+              <div className="card-body p-md-5">
+                <div className="row justify-content-center">
+                  <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
                     <form onSubmit={saveUser}>
-                        <div className="inputs">
-                            <div className="input-container">
-                                <label className="username-label" htmlFor="username">Username</label>
-                                <input type="text"
-                                 id="username" name="username" value={user.username} onChange={(e)=> handleChange(e)} placeholder="Enter your username" required />
-                            </div>
-                            <div className="input-container">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" id="email"
-                                 name="email" value={user.email} onChange={(e) => handleChange(e)} placeholder="Enter your email" required />
-                            </div>
-                            <div className="input-container">
-                                <label htmlFor="password">Password</label>
-                                <input type="password" id="password"
-                                 name="password" value={user.password} onChange={(e) => handleChange(e)} placeholder="Enter your password" required />
-                            </div>
-                            <div className="input-container">
-                                <label htmlFor="confirm_password">Confirm Password</label>
-                                <input type="password"
-                                 id="confirm_password" 
-                                 name="confirmPassword"
-                                 value={confirmPassword}
-                                 onChange={(e)=> setConfirmPassword(e.currentTarget.value)}
-                                 placeholder="Confirm your password" required />
-                            </div>
-                            <div className="input-container">
-                                <a className="sign-in-link" onClick={() => navigate("/login")} >You already have an account? Sign in here</a>
-                            </div>
-                            <div className="input-container">
-                                <input type="submit" value="Sign Up" />
-                            </div>
+
+                      
+                        <div className="form-floating mb-3">
+                             <input required
+                             name="username" value={user.username} onChange={(e)=> handleChange(e)}
+                             type="text" className="form-control bg-white text-dark" id="floatingUsername" placeholder="Username"/>
+                             <label htmlFor="floatingUsername">Username</label>
                         </div>
+                      
+
+                        <div className="form-floating mb-3">
+                        <input type="email"  required
+                         name="email" value={user.email} onChange={(e) => handleChange(e)}
+                        className="form-control bg-white fg-black text-dark" id="floatingInput" placeholder="name@example.com"/>
+                        <label  htmlFor="floatingInput">Email</label>
+                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                         </div>  
+
+                      <div className="form-floating mb-3">
+                      <input type="password" required
+                      name="password" value={user.password} onChange={(e) => handleChange(e)}
+                      className="form-control bg-white text-dark" id="floatingPassord" placeholder="Password"/>
+                             <label htmlFor="floatingPassord">Password</label>
+                             <div id="passwordHelpBlock" className="form-text">
+                             Your password must be 8-20 characters long, contain letters and numbers.
+                            </div>  
+                        </div>
+
+                            
+                  
+                        <div className="form-floating mb-3 ">
+                        <input type="password" required
+                        name="confirmPassword"
+                        value={confirmPassword}
+                        onChange={(e)=> setConfirmPassword(e.currentTarget.value)}
+                        className="form-control bg-white text-dark" id="floatingConfirmPassword" placeholder="ConfirmPassword"/>
+                             <label htmlFor="floatingConfirmPassword">Confirm Password</label> 
+                        </div>
+                    
+
+                      <div className="form-check d-flex justify-content-center mb-5">Already have an account?&nbsp;
+                      <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/login")}>Sign In Here</a>
+                      </div>
+
+                      <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="sumbit"
+                        
+                        className="btn btn-primary btn-lg" >Register</button>
+                      </div>
+
                     </form>
                     {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+                    {duplicateUsernameOrEmailMessage && <p style={{ color: 'red' }}>{duplicateUsernameOrEmailMessage}</p>}
+
+                  </div>
+                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                    <img src={Choveka}
+                      className="img-fluid rounded" alt="Sample image" />
+
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        <div className="end">
-            
-        </div>
-    </div>
+      </div>
+    </section>
+    
   )
 }
 

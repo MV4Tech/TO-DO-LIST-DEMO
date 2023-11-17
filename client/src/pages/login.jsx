@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "../styles/login.css";
-import LOGIN_PH from "../assets/images/login_ph.webp";
+import Chasovnika from "../assets/images/login_nova.png";
 import authService from "../services/auth-service";
 import {  useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [invalidCredentialsMessage, setInvalidCredentialsMessage] = useState(null);
   let navigate = useNavigate();
 
 const submit = async (e) => {
@@ -16,78 +17,77 @@ const submit = async (e) => {
         navigate("/dashboard");
     } catch (err) {
         // show error to user in user-friendly way
-        console.log(err);
+        setInvalidCredentialsMessage(err.response.data.message);
     }
   };
 
   return (
-    <div className="css-grid">
-      <div className="header-text">
-        <h1 className="sign">SIGN IN IN YOUR TO DO LIST...</h1>
-      </div>
-      <div className="login-menu">
-        <div className="image-register-grid">
-          <div className="image-container">
-            <img className="login_image" src={LOGIN_PH} alt="Chasovnika" />
-          </div>
-          <div className="actual-login">
-            <form onSubmit={submit}>
-              <div className="inputs">
-                <div className="input-container">
-                  <label className="username-label" htmlFor="username">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={username}
-                    onChange={(e) => {
-                      setUsername(e.currentTarget.value);
-                    }}
-                    placeholder="Enter your username"
-                    required
-                  />
-                </div>
+    <section className="vh-100" >
+    <div className="container h-100">
+      <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="col-lg-12 col-xl-11">
+          <div className="card text-black" style={{ borderRadius: '25px' }}>
+            <div className="card-body p-md-5">
+              <div className="row justify-content-center">
+                <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                <div className="input-container">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    required
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.currentTarget.value);
-                    }}
-                  />
-                </div>
+                  <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
 
-                <div className="input-container">
-                  <a className="sign-in-link" href="signin.html">
-                    Forgot Password?
-                  </a>
+                  <form onSubmit={submit}>
+
+                    
+                      <div className="form-floating mb-3">
+                           <input type="text" 
+                            id="username"
+                            name="username"
+                            value={username}
+                            onChange={(e) => {
+                            setUsername(e.currentTarget.value);
+                              }}
+                           className="form-control bg-white text-dark" required placeholder="Username"/>
+                           <label htmlFor="floatingUsername">Username</label>
+                      </div>
+                   
+
+                    <div className="form-floating mb-3 mt-5">
+                           <input type="password" 
+                            id="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => {
+                            setPassword(e.currentTarget.value);
+                              }}
+                           className="form-control bg-white text-dark" required placeholder="Password"/>
+                           <label htmlFor="floatingPassord">Password</label>
+                      </div>
+
+                      
+                      <div className="form-check d-flex justify-content-center mb-5">Don't have an account yet?&nbsp;
+                      <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/register")}>Sign up here</a>
+                      </div>
+
+                    <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button type="sumbit" className="btn btn-primary btn-lg">Login</button>
+                    </div>
+
+                  </form>
+                  {invalidCredentialsMessage && <p style={{ color: 'red' }}>{invalidCredentialsMessage}</p>}
+
                 </div>
-                <div className="input-container">
-                  <input
-                    type="submit"
-                    value="Sign In"
-                  />
-                </div>
-                <div className="input-container">
-                  <a className="sign-in-link" href="signin.html">
-                    Not a user? Sign Up
-                  </a>
+                <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                  <img src={Chasovnika}
+                    className="img-fluid rounded" alt="Sample image" />
+
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-      <div className="end"></div>
     </div>
+  </section>
+
   );
 };
 
