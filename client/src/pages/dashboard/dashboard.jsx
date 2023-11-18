@@ -1,7 +1,7 @@
 import React from "react";
 import storageService from "../../services/storage-service";
 import { useNavigate } from "react-router-dom";
-import 'D:/git-to-do/to-do-list/client/src/styles/dashboard.css'
+import '../../styles/dashboard.css';
 import Header from "./header";
 import Body from "./body";
 import Footer from "./footer";

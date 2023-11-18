@@ -1,5 +1,8 @@
 import React from 'react'
-import 'D:/git-to-do/to-do-list/client/src/styles/footer.css'
+import '../../styles/footer.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee,faAnglesDown } from '@fortawesome/free-solid-svg-icons'
+
 
 const footer = () => {
     const bodyStyle = {

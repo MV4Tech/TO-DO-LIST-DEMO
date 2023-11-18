@@ -1,7 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './../../styles/dashboard.css';
-import storageService from "../../services/storage-service";
+
+import '../../styles/dashboard.css';
+import storageService from '../../services/storage-service.js';
+import TaskModal from './taskModal.jsx'
+
+
 
 
 
@@ -43,16 +47,7 @@ const Header = () => {
             
               <div className="py-5 px-4 masthead-cards">
                 <div className="d-flex">
-                  <a onClick={()=> {navigate("/createTask")}} className="w-50 pr-3 pb-4 p-2">
-                    <div className="card border-0 border-bottom-red shadow-lg shadow-hover ">
-                      <div className="card-body text-center ">
-                        <div className="text-center">    
-                          <i className="fa fa-pencil fa-4x my-2"></i>
-                        </div>
-                        Create Task
-                      </div>
-                    </div>
-                  </a>
+                  <TaskModal/>                
                   <a href="#"  className="w-50 pl-3 pb-4 p-2">
                     <div className="card border-0 border-bottom-blue shadow-lg shadow-hover">
                       <div className="card-body text-center">

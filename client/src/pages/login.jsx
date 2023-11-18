@@ -3,7 +3,9 @@ import "../styles/login.css";
 import Chasovnika from "../assets/images/login_nova.png";
 import authService from "../services/auth-service";
 import {  useNavigate } from "react-router-dom";
-import Footer from './dashboard/footer.jsx'
+import Footer from "./dashboard/footer";
+
+
 
 
 const Login = () => {
@@ -90,6 +92,7 @@ const submit = async (e) => {
     </div>
     <Footer/>
   </section>
+
 
   );
 };

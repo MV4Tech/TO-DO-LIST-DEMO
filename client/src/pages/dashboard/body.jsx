@@ -1,8 +1,11 @@
+
+import React from 'react'
+import '../../styles/bodyTable.css'
 import React, { useEffect, useState } from 'react'
-import 'D:/git-to-do/to-do-list/client/src/styles/bodyTable.css'
 import TaskService from '../../services/task-service' 
 import { jwtDecode } from "jwt-decode";
 import storageService from '../../services/storage-service';
+
 
 
 const body = () => {
