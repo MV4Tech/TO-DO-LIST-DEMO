@@ -27,7 +27,7 @@ const Dashboard = () => {
     
 
       <Header />
-      <div class="text-center mt-4">
+      <div className="text-center mt-4">
         <button style={{ border: 'none', outline: 'none', background: 'none'}} onClick={() => scrollToSection(tasks)}>
         <FontAwesomeIcon icon={faAnglesDown} size="xl" beatFade style={{color: "#000000",}} />
         </button>

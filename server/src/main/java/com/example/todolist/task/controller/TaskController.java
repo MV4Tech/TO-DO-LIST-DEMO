@@ -5,6 +5,7 @@ import com.example.todolist.task.service.TaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/task")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TaskController {
     @Autowired
     private TaskService taskService;
@@ -62,6 +64,13 @@ public class TaskController {
         logger.info("Updating task with ID : {}", task.getId());
         return new ResponseEntity<>(taskService.updateTask(task),HttpStatus.OK);
 
+    }
+
+    @GetMapping("/get-tasks-by-username/{username}")
+    @PreAuthorize("hasAuthority('task:read')")
+    public ResponseEntity<List<Task>> getTaskByUsername(@PathVariable("username") String username){
+        List<Task> tasksByUsername = taskService.getTaskByUsername(username);
+        return new ResponseEntity<>(tasksByUsername,HttpStatus.OK);
     }
 
 

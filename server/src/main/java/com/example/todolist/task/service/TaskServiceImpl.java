@@ -76,5 +76,12 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.save(task);
     }
 
+    @Override
+    public List<Task> getTaskByUsername(String username) {
+
+        List<Task> tasksByUsername = taskRepository.findAllTasksByUsername(username);
+        return tasksByUsername;
+    }
+
 
 }
