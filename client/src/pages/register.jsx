@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Choveka from '../assets/images/login_image.jpg'
 import { useNavigate } from 'react-router-dom'
 import authService from '../services/auth-service'
+import Footer from "./dashboard/footer";
 
 const Register = () => {
 
@@ -127,6 +128,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </section>
     
   )

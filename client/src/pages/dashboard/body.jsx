@@ -1,5 +1,5 @@
 import React from 'react'
-import 'D:/git-to-do/to-do-list/client/src/styles/bodyTable.css'
+import '../../styles/bodyTable.css'
 
 
 
