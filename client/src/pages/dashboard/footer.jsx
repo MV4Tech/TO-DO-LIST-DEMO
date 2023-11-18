@@ -3,6 +3,7 @@ import '../../styles/footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee,faAnglesDown } from '@fortawesome/free-solid-svg-icons'
 
+
 const footer = () => {
     const bodyStyle = {
         marginTop:"200px"
