@@ -3,6 +3,8 @@ import "../styles/login.css";
 import Chasovnika from "../assets/images/login_nova.png";
 import authService from "../services/auth-service";
 import {  useNavigate } from "react-router-dom";
+import Footer from './dashboard/footer.jsx'
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -86,6 +88,7 @@ const submit = async (e) => {
         </div>
       </div>
     </div>
+    <Footer/>
   </section>
 
   );

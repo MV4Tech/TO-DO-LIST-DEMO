@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/admin")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AdminController {
 
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);

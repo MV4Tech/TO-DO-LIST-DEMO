@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TaskRepository extends JpaRepository<Task,Integer>{
 
@@ -17,6 +19,8 @@ public interface TaskRepository extends JpaRepository<Task,Integer>{
 //    @Query("DELETE FROM TASK t WHERE t.USER_ID = :taskId")
 //    void deleteTasksById(@Param("taskId") Integer taskId);
 
+    @Query("SELECT t FROM Task t JOIN t.user u WHERE u.username = :username")
+    List<Task> findAllTasksByUsername(@Param("username") String username);
 
 
 }
