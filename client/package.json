@@ -23,6 +23,7 @@
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-datepicker": "^4.21.0",
