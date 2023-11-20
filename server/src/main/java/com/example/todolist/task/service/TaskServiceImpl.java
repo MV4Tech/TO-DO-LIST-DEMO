@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +25,39 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task saveTask(Task task) {
         logger.info("Saving task: {}", task);
+        //getting  formatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        if(task.getEndDate() != null && task.getStartDate() != null){
+
+            //getting the old dates and time
+            String getOldStartDateTime = task.getStartDate()+"";
+            String getOldEndDateTime = task.getEndDate()+"";
+            //parsing the data
+            LocalDateTime newOldStartDateTime = LocalDateTime.parse(getOldStartDateTime, formatter);
+            LocalDateTime newOldEndDateTime = LocalDateTime.parse(getOldEndDateTime, formatter);
+            //setting the data
+            task.setStartDate(newOldStartDateTime);
+            task.setEndDate(newOldEndDateTime);
+        }
+
+        if(task.getStartDate() != null){
+            //getting the old dates and time
+            String getOldStartDateTime = task.getStartDate()+"";
+            //parsing the data
+            LocalDateTime newOldStartDateTime = LocalDateTime.parse(getOldStartDateTime, formatter);
+            //setting the data
+            task.setStartDate(newOldStartDateTime);
+        }
+
+        if(task.getEndDate() != null){
+            //getting the old dates and time
+            String getOldEndDateTime = task.getEndDate()+"";
+            //parsing the data
+            LocalDateTime newOldEndDateTime = LocalDateTime.parse(getOldEndDateTime, formatter);
+            //setting the data
+            task.setEndDate(newOldEndDateTime);
+        }
+
         Task savedTask = taskRepository.save(task);
         logger.info("Task saved successfully: {}", savedTask);
         return savedTask;

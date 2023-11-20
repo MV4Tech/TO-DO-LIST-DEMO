@@ -11,8 +11,8 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-   # url: jdbc:mysql://192.168.1.3:3306/tododb
-    url: jdbc:mysql://192.168.1.10:3306/tododb
+    url: jdbc:mysql://192.168.1.3:3306/tododb
+   # url: jdbc:mysql://192.168.1.10:3306/tododb
 
     username: root
     password: root
