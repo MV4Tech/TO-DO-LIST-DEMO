@@ -66,6 +66,8 @@ public class TaskController {
 
     }
 
+
+    // get all task by username
     @GetMapping("/get-tasks-by-username/{username}")
     @PreAuthorize("hasAuthority('task:read')")
     public ResponseEntity<List<Task>> getTaskByUsername(@PathVariable("username") String username){

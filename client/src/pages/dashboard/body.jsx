@@ -1,94 +1,84 @@
-
-import React from 'react'
-import { useEffect, useState } from 'react'
-import TaskService from '../../services/task-service' 
-import '../../styles/bodyTable.css'
+import React, { useEffect, useState } from 'react';
+import '../../styles/bodyTable.css';
+import TaskService from '../../services/task-service';
+import Task from './task';
 import storageService from '../../services/storage-service';
 
 
+const Body = () => {
+  const [loading, setLoading] = useState(true);
+  const [tasks, setTasks] = useState([]);
 
-const body = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await TaskService.getTasksByUsername();
+        setTasks(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const [loading,setLoading] = useState(true);
-  const [task, setTask] = useState(null);
+    fetchData();
+  }, []);
 
-  useEffect( () => { 
+  const deleteTask = (e, id) => {
+    e.preventDefault();
+    TaskService.deleteTaskById(id).then((res) => {
+      setTasks((prevTasks) => {
+        return prevTasks.filter((task) => task.id !== id);
+      });
+    });
+  };
 
-    const fetchData = async () =>{ 
-      setLoading(true); 
-      try{
+  const bodyStyle = {
+    fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif',
+    fontSize: '13px',
+    color: '#555',
+    background: 'none',
+    marginTop: '100px',
+  };
 
-      const response = await TaskService.getTasksByUsername();
-      setTask(response.data);
-      setLoading(false);
-   } catch(error){
-    console.log(error);
-   }
-   
-    }
-   fetchData();
-    
-  },[])
+  const noTasksStyle = {
+    textAlign: 'center',
+    fontSize: '18px',
+    color: '#888',
+    marginTop: '20px',
+  };
 
-
-
-
-    const bodyStyle = {
-        fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-        fontSize: "13px",
-        color: "#555",
-        background: "none",
-        marginTop:"100px"
-        
-      };
-      
   return (
- 
-    
-    
     <div style={bodyStyle}>
-        <h1 className="  text-center text-dark mb-5 font-weight-bold">Tasks</h1>
-     <div className="container bootstrap snippets bootdey">
-      <div className="table-responsive">
-        {/* PROJECT TABLE */}
-        <table className="table colored-header datatable project-list">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Date Start</th>
-              <th>Days to Deadline</th>
-              <th>Progress</th>
-              <th>Priority</th>
-              <th>Leader</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          {!loading &&(
-          <tbody>
-            {task.map((task) => (
-            <tr>
-              <td><a href="#">{task.topic}</a></td>
-              <td>{task.startDate}</td>
-              <td>{task.endDate}</td>
-              <td>
-                <div className="progress">
-                  <div className="progress-bar" data-transitiongoal="95" aria-valuenow="95" style={{ width: '95%' }}>95%</div>
-                </div>
-              </td>
-              <td><span className="label label-warning">{task.priority}</span></td>
-              <td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar" className="avatar img-circle" /> <a href="#">Michael</a></td>
-              <td><span className="label label-success">{task.isActive}</span></td>
-            </tr>
-              ))}
-            {/* Add more rows as needed */}
-          </tbody>
+      <h1 className="text-center text-dark mb-5 font-weight-bold">My Tasks</h1>
+      <div className="container bootstrap snippets bootdey">
+        <div className="table-responsive">
+          {loading ? (
+            <p>Loading...</p>
+          ) : tasks.length === 0 ? (
+            <p style={noTasksStyle}>No Tasks Created... <a href="#">create</a></p>
+          ) : (
+            <table className="table colored-header datatable project-list">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Date Start</th>
+                  <th>Days to Deadline</th>
+                  <th>Priority</th>
+                  <th className="my-custom-td">Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tasks.map((task) => (
+                  <Task task={task} deleteTask={deleteTask} key={task.id} />
+                ))}
+              </tbody>
+            </table>
           )}
-        </table>
-        {/* END PROJECT TABLE */}
+        </div>
       </div>
-     </div>
     </div>
-  )
-}
+  );
+};
 
-export default body
+export default Body;

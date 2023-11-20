@@ -7,8 +7,7 @@ import { jwtDecode } from "jwt-decode";
 
 
 class TaskService{
-    
-
+    // GET TASKS BY USERNAME
     getTasksByUsername(){
    
         const decodeToken = (token) => {
@@ -26,6 +25,26 @@ class TaskService{
         return axios.get(`${SERVER_TASK_URL}/get-tasks-by-username/${username}`, { headers: { Authorization: `Bearer ${accessToken}` } });
     }
 
+
+    // GET TASK BY ID 
+    getTaskById(id){
+      const decodeToken = (token) => {
+        try {
+          const decoded = jwtDecode(token);
+          return decoded ? decoded.sub : null; // 'sub' typically represents the subject in a JWT
+        } catch (error) {
+          console.error('Error decoding token:', error);
+          return null;
+        }
+      };
+      
+    const accessToken = storageService.retrieveAccessToken();
+      return axios.get(`${SERVER_TASK_URL}/get-task/${id}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    }
+
+  
+  
+
     async saveTask(task){
       
       const accessToken = storageService.retrieveAccessToken();
@@ -41,6 +60,7 @@ class TaskService{
     }
 
     async getIdByUsername(){
+
       const decodeToken = (token) => {
         try {
           const decoded = jwtDecode(token);
@@ -61,10 +81,23 @@ class TaskService{
         throw "Error "+response.data;
       }
       return response.data;
-      
-
     }
-
+  
+    // DELETE TASK BY ID 
+    deleteTaskById(id){
+      const decodeToken = (token) => {
+        try {
+          const decoded = jwtDecode(token);
+          return decoded ? decoded.sub : null; // 'sub' typically represents the subject in a JWT
+        } catch (error) {
+          console.error('Error decoding token:', error);
+          return null;
+        }
+      };
+      
+    const accessToken = storageService.retrieveAccessToken();
+      return axios.delete(`${SERVER_TASK_URL}/delete-task/${id}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+      }
 }
 
 export default new TaskService();
