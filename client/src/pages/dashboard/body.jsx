@@ -1,9 +1,8 @@
 
 import React from 'react'
-import '../../styles/bodyTable.css'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import TaskService from '../../services/task-service' 
-import { jwtDecode } from "jwt-decode";
+import '../../styles/bodyTable.css'
 import storageService from '../../services/storage-service';
 
 
