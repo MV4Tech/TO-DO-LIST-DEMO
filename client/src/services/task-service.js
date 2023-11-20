@@ -9,7 +9,7 @@ import { jwtDecode } from "jwt-decode";
 class TaskService{
     
   
-
+    // GET TASKS BY USERNAME
     getTasksByUsername(){
    
         const decodeToken = (token) => {
@@ -25,6 +25,55 @@ class TaskService{
         const accessToken = storageService.retrieveAccessToken();
         const username = decodeToken(accessToken);
         return axios.get(`${SERVER_TASK_URL}/get-tasks-by-username/${username}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    }
+
+    // GET TASK BY ID 
+    getTaskById(id){
+      const decodeToken = (token) => {
+        try {
+          const decoded = jwtDecode(token);
+          return decoded ? decoded.sub : null; // 'sub' typically represents the subject in a JWT
+        } catch (error) {
+          console.error('Error decoding token:', error);
+          return null;
+        }
+      };
+      
+    const accessToken = storageService.retrieveAccessToken();
+      return axios.get(`${SERVER_TASK_URL}/get-task/${id}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    }
+
+    // UPDATE TASK BY ID
+    updateTaskById(task){
+      const decodeToken = (token) => {
+        try {
+          const decoded = jwtDecode(token);
+          return decoded ? decoded.sub : null; // 'sub' typically represents the subject in a JWT
+        } catch (error) {
+          console.error('Error decoding token:', error);
+          return null;
+        }
+      };
+      
+    const accessToken = storageService.retrieveAccessToken();
+      return axios.get(`${SERVER_TASK_URL}/get-task`,task ,{ headers: { Authorization: `Bearer ${accessToken}` } });
+    }
+
+
+    // DELETE TASK BY ID 
+    deleteTaskById(id){
+      const decodeToken = (token) => {
+        try {
+          const decoded = jwtDecode(token);
+          return decoded ? decoded.sub : null; // 'sub' typically represents the subject in a JWT
+        } catch (error) {
+          console.error('Error decoding token:', error);
+          return null;
+        }
+      };
+      
+    const accessToken = storageService.retrieveAccessToken();
+      return axios.delete(`${SERVER_TASK_URL}/delete-task/${id}`, { headers: { Authorization: `Bearer ${accessToken}` } });
     }
 
 }
