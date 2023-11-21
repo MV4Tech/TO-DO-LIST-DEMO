@@ -1,6 +1,7 @@
 import React from 'react'
 import DeleteTask from './deleteTaskModal';
 import ViewTaskModal from './viewTaskModal';
+import EditTaskModal from './editTaskModal';
 const Task = ({task, deleteTask}) => {
 
   if (!task) {
@@ -37,7 +38,7 @@ const Task = ({task, deleteTask}) => {
                 <span className="label label-success">
                 <div>
               <ViewTaskModal task = {task}/>
-              <button onClick={(e,id) => editTask(e,id)} type="button" className="btn btn-outline-secondary btn-sm" style={{ marginRight: '8px' }} data-mdb-ripple-color="dark">Edit</button>
+              <EditTaskModal task = {task}/>
               <button type="button" className="btn btn-outline-success btn-sm" style={{ marginRight: '8px' }} data-mdb-ripple-color="dark">Mark As Resolved</button>
               
               <DeleteTask task = {task} deleteTask = {deleteTask}/>

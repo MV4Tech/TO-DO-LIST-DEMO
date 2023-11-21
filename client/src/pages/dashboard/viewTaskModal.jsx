@@ -25,25 +25,6 @@ function ViewTaskModal({task}) {
     setSelectedDate(date);
   };
 
-  // fetch data
-  const [loading, setLoading] = useState(true);
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await taskService.getTaskById(task.id);
-        setTasks(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
 
 
   return (
