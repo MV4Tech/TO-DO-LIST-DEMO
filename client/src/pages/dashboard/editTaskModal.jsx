@@ -62,12 +62,30 @@ function EditTaskModal({task}) {
   }, []);
   
 
+  useEffect(() => {
+    
+    const fetchData = async () =>{
+        try{
+          setEditTask(task)
+        }catch(error){
+          console.log(error);
+        }
+
+    };
+    fetchData();
+
+  }, []);
+  
+
 
 
   const handleChange = (e)=>{
     const value = e.target.value;
     setEditTask({...editTask,[e.target.name]: value})
   } 
+
+
+
 
   const updateTask = (e) => {
     taskService.updateTaskById(editTask)
@@ -114,7 +132,7 @@ function EditTaskModal({task}) {
         <Form.Label>Topic</Form.Label>
         <Form.Control
         name="topic"
-        defaultValue={task.topic}
+        value={editTask.topic}
         onChange={(e) => handleChange(e)}
         className=' bg-white'  required type="textbox"/>
 
@@ -123,7 +141,7 @@ function EditTaskModal({task}) {
         <Form.Label>Description</Form.Label>
         <Form.Control
         name="description"
-        defaultValue={task.description}
+        value={editTask.description}
         onChange={(e)=> handleChange(e)}
         as="textarea" required rows={3} />
       </Form.Group>
@@ -133,12 +151,13 @@ function EditTaskModal({task}) {
       </div>  
       <Form.Select
       name="priority"
-      defaultValue={task.priority}
+      value={editTask.priority}
       onChange={(e) => handleChange(e)}
        aria-label="Default select example"
        required
+       defaultValue=""
        >
-       <option value="" disabled>Select a priority</option>
+      <option value="" disabled>Select a priority</option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -154,7 +173,7 @@ function EditTaskModal({task}) {
       <DemoContainer   components={['DateTimePicker']}>
         <DateTimePicker
         name="startDate"
-        defaultValue={task.startDate ? dayjs(task.startDate) : null}
+        value={(editTask.startDate ? dayjs(task.startDate) : null)}
         onChange={(date) => handleStartDateChange(date)}
         label="pick a datetime" />
       </DemoContainer>
@@ -168,7 +187,7 @@ function EditTaskModal({task}) {
       <DemoContainer   components={['DateTimePicker']}>
         <DateTimePicker
         name="endDate"
-        defaultValue={task.endDate ? dayjs(task.endDate) : null}
+        value={(editTask.endDate ? dayjs(task.startDate) : null)}
         onChange={(date) => handleEndDateChange(date)}
         label="pick a deadline" />
       </DemoContainer>

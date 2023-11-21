@@ -67,15 +67,11 @@ public class TaskServiceImpl implements TaskService {
     public Task getTask(int id) {
         Optional<Task> task = taskRepository.findById(id);
 
-        if(!task.isPresent()){
-            logger.info("Task with ID {} not found.", id);
-            throw new ApiRequestException("The Task With ID: "+ id +" Doesn't Exists!");
-        }else
-            logger.info("Task found: {}", task.get());
-            return task.get();
+        task.ifPresent(t -> logger.info("Task found: {}", t));
 
-    //  return task.orElseThrow(() -> new ApiRequestException("The Task With ID: " + id + " Doesn't Exists!"));
+        return task.orElseThrow(() -> new ApiRequestException("The Task With ID: " + id + " Doesn't Exist!"));
     }
+
 
     @Override
     public List<Task> getAllTasks() {
