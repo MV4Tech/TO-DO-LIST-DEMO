@@ -33,6 +33,15 @@ const Body = () => {
     });
   };
 
+  const resolveTask = (e, id) => {
+    e.preventDefault();
+    TaskService.setTaskInactive(id).then((res) => {
+      setTasks((prevTasks) => {
+        return prevTasks.filter((task) => task.id !== id);
+      });
+    });
+  };
+
   const bodyStyle = {
     fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif',
     fontSize: '13px',
@@ -61,16 +70,16 @@ const Body = () => {
             <table className="table colored-header datatable project-list">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Date Start</th>
-                  <th>Days to Deadline</th>
-                  <th>Priority</th>
-                  <th className="my-custom-td">Options</th>
+                  <th className="text-dark table-columns-text">Title</th>
+                  <th className="text-dark table-columns-text">Date Start</th>
+                  <th className="text-dark table-columns-text">Days to Deadline</th>
+                  <th className="text-dark table-columns-text">Priority</th>
+                  <th className="my-custom-td text-dark table-columns-text">Options</th>
                 </tr>
               </thead>
               <tbody>
                 {tasks.map((task) => (
-                  <Task task={task} deleteTask={deleteTask} key={task.id} />
+                  <Task task={task} deleteTask={deleteTask} resolveTask = {resolveTask} key={task.id} />
                 ))}
               </tbody>
             </table>

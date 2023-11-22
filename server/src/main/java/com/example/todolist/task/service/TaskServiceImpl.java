@@ -114,5 +114,16 @@ public class TaskServiceImpl implements TaskService {
         return tasksByUsername;
     }
 
+    @Override
+    public void setTaskAsInactive(int id) {
+        Optional<Task> task = taskRepository.findById(id);
+        if(!task.isPresent()){
+            throw new TasksNotFoundException("Task not found for inactive");
+        }
+        Task currTask = task.get();
+        currTask.setIsActive(false);
+        taskRepository.save(currTask);
+    }
+
 
 }
