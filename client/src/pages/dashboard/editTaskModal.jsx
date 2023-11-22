@@ -123,7 +123,7 @@ function EditTaskModal({task}) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>New Task</Modal.Title>
+          <Modal.Title>Edit Task</Modal.Title>
         </Modal.Header>
         <form onSubmit={updateTask}>
         <Modal.Body>

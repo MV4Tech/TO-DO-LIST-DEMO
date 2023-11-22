@@ -2,7 +2,10 @@ import React from 'react'
 import DeleteTask from './deleteTaskModal';
 import ViewTaskModal from './viewTaskModal';
 import EditTaskModal from './editTaskModal';
-const Task = ({task, deleteTask}) => {
+import ResolveTask from './resolveTaskModal'
+import '../../styles/task.css'
+
+const Task = ({task, deleteTask, resolveTask}) => {
 
   if (!task) {
     return <tr>Loading......</tr>; // You can replace this with a loading spinner or any other loading indicator.
@@ -14,17 +17,12 @@ const Task = ({task, deleteTask}) => {
     return `${percentage}%`;
   };
 
-  const editTask = (e,id) => {
-    e.preventDefault();
-    
-  }
-
 
   return task.isActive ? (
     <tr key={task.id}>
-              <td>{task.topic}</td>
-              <td>{task.startDate}</td>
-              <td>{task.endDate}</td>
+              <td className="row-topic">{task.topic}</td>
+              <td  className="row-date">{task.startDate}</td>
+              <td  className="row-date">{task.endDate}</td>
               <td>
                 
                 <div className="progress">
@@ -39,8 +37,7 @@ const Task = ({task, deleteTask}) => {
                 <div>
               <ViewTaskModal task = {task}/>
               <EditTaskModal task = {task}/>
-              <button type="button" className="btn btn-outline-success btn-sm" style={{ marginRight: '8px' }} data-mdb-ripple-color="dark">Mark As Resolved</button>
-              
+              <ResolveTask task={task} resolveTask = {resolveTask}/>
               <DeleteTask task = {task} deleteTask = {deleteTask}/>
            
                 </div>

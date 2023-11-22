@@ -3,7 +3,7 @@
     padding: 3rem 0 7rem;
     position: relative;
     background-color: rgb(49, 72, 221);
-    background-image: url(https://startbootstrap.com/assets/img/overlay.svg), linear-gradient(45deg, #e4b51dc0 0%, #dc1616e8 100%);
+    background-image: url(https://startbootstrap.com/assets/img/overlay.svg), linear-gradient(45deg, #BA68C8 0%, #f6f6f6e8 100%);
     background-size: cover;
     z-index: 0
 }
@@ -61,7 +61,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(129, 13, 13, 0.3);
+    background-color: rgba(97, 36, 196, 0.3);
     top: 0;
     left: 0;
     z-index: -1;

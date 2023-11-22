@@ -75,5 +75,15 @@ public class TaskController {
         return new ResponseEntity<>(tasksByUsername,HttpStatus.OK);
     }
 
+    // set task as inactive
+    @PatchMapping("/set-inactive/{id}")
+    @PreAuthorize("hasAuthority('task:update')")
+    public ResponseEntity<Void> setTaskAsInactive(@PathVariable("id") int id){
+
+        taskService.setTaskAsInactive(id);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 
 }

@@ -78,6 +78,17 @@ class TaskService{
         return axios.put(`${SERVER_TASK_URL}/update-task`,task, { headers: { Authorization: `Bearer ${accessToken}` } });
         }
 
+      
+        setTaskInactive(id) {
+          const accessToken = storageService.retrieveAccessToken();
+          
+          return axios.patch(`${SERVER_TASK_URL}/set-inactive/${id}`, {}, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          });
+        }
+        
      
 
 }
