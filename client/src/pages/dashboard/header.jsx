@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import '../../styles/dashboard.css';
-import storageService from '../../services/storage-service.js';
 import TaskModal from './taskModal.jsx'
 
 
@@ -12,7 +11,7 @@ import TaskModal from './taskModal.jsx'
 const Header = () => {
     const navigate = useNavigate();
 
-    
+   
 
   return (
     <>    
@@ -37,22 +36,15 @@ const Header = () => {
                 
               </h2>
             </div>
-            <div className="col-lg-5 ">
-              <div className="position-absolute top-0 end-0 p-3">
-                <button onClick={() => {
-                  storageService.deleteUserData();
-                  navigate("/");
-                  }}>Log out</button>
-              </div>
-            
+            <div className="col-lg-5 ">            
               <div className="py-5 px-4 masthead-cards">
                 <div className="d-flex">
-                  <TaskModal/>                
-                  <a href="#"  className="w-50 pl-3 pb-4 p-2">
+                <TaskModal/>             
+                  <a onClick={() => navigate("/profile")} style={{ cursor: 'pointer' }}  className="w-50 pl-3 pb-4 p-2">
                     <div className="card border-0 border-bottom-blue shadow-lg shadow-hover">
                       <div className="card-body text-center">
                         <div className="text-center">
-                          <i className="fa fa-th fa-4x my-2"></i>
+                        <i className="fa fa-4x fa-user my-2"></i>
                         </div>
                         Profile
                       </div>
@@ -74,9 +66,9 @@ const Header = () => {
                     <div className="card border-0 border-bottom-green shadow-lg shadow-hover">
                       <div className="card-body text-center">
                         <div className="text-center">
-                          <i className="fa fa-4x fa-list my-2"></i>
+                          <i className="fa fa-4x fa-list-ul my-2"></i>
                         </div>
-                        Guides
+                        Resolved Tasks
                       </div>
                     </div>
                   </a>
