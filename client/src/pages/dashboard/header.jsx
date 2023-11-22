@@ -29,10 +29,9 @@ const Header = () => {
                 Best To Do List in Town! Start now for free!
               </h1>
               <h2 className="m-0">
-                Are you ready to be organized. If your answer is YES.<br></br>
-                Start today, do not hesitate.<br></br>
-                Simply Awesome!<br></br>
-                For each upcoming month, it's just $3.99.
+              "Welcome to Your Productivity Hub! <br></br>🚀 Get ready to conquer your day with our intuitive To-Do List.
+              <br></br> Your journey to increased efficiency and accomplishment starts here.<br></br> Let's turn your tasks into triumphs! 
+              <br></br> 🌟 #ProductivityMatters #GetThingsDone"
                 
               </h2>
             </div>

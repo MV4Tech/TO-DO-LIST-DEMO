@@ -46,7 +46,7 @@ public class AdminController {
         logger.debug("Returning {} users from the database.",users.size());
         return new ResponseEntity<>(users,HttpStatus.OK);
     }
-
+    
     // get user by ID
     @GetMapping("/get-user/{id}")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")

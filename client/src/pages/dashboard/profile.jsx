@@ -1,14 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../styles/profile.css';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import storageService from '../../services/storage-service.js';
 import Footer from "../dashboard/footer";
+import UserService from '../../services/user-service';
 
 
 const Profile = () => {
 
   const navigate = useNavigate();
+
+  const [userId, setUserId] = useState(null);
+
+  const [user, setUser] = useState({
+
+    id:"",
+    username:"",
+    password:"",
+    email:"",
+  });
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const obtainedUserId = await UserService.getIdByUsername();
+
+        setUserId(obtainedUserId);
+
+        const response = await UserService.getUserById(obtainedUserId)
+       
+        setUser(response.data)
+
+        
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle error as needed
+      }
+    }
+
+    fetchData();
+  }, []); 
 
 
 
@@ -23,9 +55,11 @@ const Profile = () => {
     <div className="container rounded bg-white mt-5 mb-3 extra-margin-top">
         <div className="row">
             <div className="col-md-4 border-right">
-                <div className="d-flex flex-column align-items-center text-center p-3 py-5 mt-5"><i className="fa fa-4x fa-user my-2"></i><span className="font-weight-bold">John Doe</span><span class="text-black-50">john_doe12@bbb.com</span>
+                <div className="d-flex flex-column align-items-center text-center p-3 py-5 mt-5"><i className="fa fa-4x fa-user my-2"></i>
+                <span className="font-weight-bold">{user.username}</span>
+                <span className="text-black-50">{user.email}</span>
             
-                <span className='mt-5 '><Button onClick={() => {
+                <span className='moove-button-down'><Button onClick={() => {
                   storageService.deleteUserData();
                   navigate("/");
                   }} variant="dark" style={{ width: '110px'}}>
