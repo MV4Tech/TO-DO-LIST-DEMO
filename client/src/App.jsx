@@ -13,6 +13,7 @@ import Register from './pages/register';
 import Login from './pages/login';
 
 import Dashboard from './pages/dashboard/dashboard';
+import Profile from './pages/dashboard/profile';
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -21,11 +22,12 @@ const App = createBrowserRouter(
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="register" element={<Register />} />
-            <Route path="login" element={<Login />} />
+            <Route path="login" element={<Login />} />       
           </Route>
         </Route>
          {/* <Route element={<AuthGuardWhenLogin />}>*/}
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="profile" element={<Profile/>} />
         {/*</Route>*/}
     </>
   )
