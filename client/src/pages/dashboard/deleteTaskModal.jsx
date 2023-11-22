@@ -16,7 +16,7 @@ function DeleteTask({task,deleteTask}) {
         <Modal.Header closeButton>
           <Modal.Title>Delete</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, are you sure you want to DELETE this TASK!</Modal.Body>
+        <Modal.Body>Woohoo, are you sure you want to DELETE TASK: "{task.topic} " !</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

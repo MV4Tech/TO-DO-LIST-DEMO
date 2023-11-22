@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import ResolvedTaskModal from "./resolvedHeaderTaskModal.jsx";
 import '../../styles/dashboard.css';
 import TaskModal from './taskModal.jsx'
 
@@ -61,16 +61,9 @@ const Header = () => {
                       </div>
                     </div>
                   </a>
-                  <a href="#" className="w-50 pl-3 p-2">
-                    <div className="card border-0 border-bottom-green shadow-lg shadow-hover">
-                      <div className="card-body text-center">
-                        <div className="text-center">
-                          <i className="fa fa-4x fa-list-ul my-2"></i>
-                        </div>
-                        Resolved Tasks
-                      </div>
-                    </div>
-                  </a>
+
+                  <ResolvedTaskModal/>
+                  
                 </div>
                 <div className="shape"></div>
               </div>
