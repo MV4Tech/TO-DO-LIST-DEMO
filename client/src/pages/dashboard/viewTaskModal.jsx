@@ -33,8 +33,7 @@ function ViewTaskModal({task}) {
       <Modal
         show={show}
         onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
+       
       >
         <Modal.Header closeButton>
           <Modal.Title>Info</Modal.Title>

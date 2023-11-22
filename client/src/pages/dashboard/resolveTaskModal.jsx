@@ -9,13 +9,13 @@ function ResolveTask({task,resolveTask}) {
   const handleShow = () => setShow(true);
 
   return (
-    <>
+    <> 
       <button onClick={handleShow} type="button" className="btn btn-outline-success btn-sm" style={{ marginRight: '8px' }} data-mdb-ripple-color="dark">Mark As Resolved</button>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>RESOLVE TASK</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, are you sure you want to RESOLVE this TASK!</Modal.Body>
+        <Modal.Body>Woohoo, are you sure you want to RESOLVE TASK: "{task.topic}"!</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
