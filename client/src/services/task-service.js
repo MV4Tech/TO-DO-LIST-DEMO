@@ -39,30 +39,8 @@ class TaskService{
         }
 
     }
+    //
 
-    async getIdByUsername(){
-
-      const decodeToken = (token) => {
-        try {
-          const decoded = jwtDecode(token);
-          return decoded ? decoded.sub : null; // 'sub' typically represents the subject in a JWT
-        } catch (error) {
-          console.error('Error decoding token:', error);
-          return null;
-        }
-      };
-      
-      const accessToken = storageService.retrieveAccessToken();
-      const username = decodeToken(accessToken);
-
-      let response = await axios.get(SERVER_URL+`api/v1/user/get-id/${username}`,
-      { headers: { Authorization: `Bearer ${accessToken}` } });
-
-      if(response.status != 200){
-        throw "Error "+response.data;
-      }
-      return response.data;
-    }
   
     // DELETE TASK BY ID 
     deleteTaskById(id){

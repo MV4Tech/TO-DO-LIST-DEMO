@@ -12,6 +12,7 @@ import utc from 'dayjs/plugin/utc';
 import taskService from '../../services/task-service';
 dayjs.extend(utc);
 import TaskService from '../../services/task-service';
+import UserService from '../../services/user-service' 
 
 
 
@@ -42,7 +43,7 @@ function EditTaskModal({task}) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const obtainedUserId = await TaskService.getIdByUsername();
+        const obtainedUserId = await UserService.getIdByUsername();
   
         // Update the task state with the new values
         setEditTask((prevTask) => ({

@@ -9,6 +9,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import '../../styles/dateTimePicker.css';
 import { useNavigate } from 'react-router-dom';
 import TaskService from '../../services/task-service' 
+import UserService from '../../services/user-service' 
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 
@@ -45,7 +46,7 @@ function TaskModal() {
     useEffect(() => {
       async function fetchData() {
         try {
-          const obtainedUserId = await TaskService.getIdByUsername();
+          const obtainedUserId = await UserService.getIdByUsername();
   
           // Set the obtained user ID to the state
           setUserId(obtainedUserId);

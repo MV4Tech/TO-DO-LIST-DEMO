@@ -5,6 +5,11 @@
   border-color: #BA68C8;
 }
 
+.moove-button-down{
+  position: absolute;
+  margin-top: 180px !important;
+
+}
 
 
 .profile-button:hover {
@@ -26,7 +31,7 @@
   cursor: pointer;
 }
 .extra-margin-top {
-    margin-top: 170px !important; /* You can adjust the value as needed */   
+    margin-top: 180px !important; /* You can adjust the value as needed */   
 }
 
 
