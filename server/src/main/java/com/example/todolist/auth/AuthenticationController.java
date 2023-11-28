@@ -31,4 +31,9 @@ public class AuthenticationController {
      authenticationService.refreshToken(request,response);
     }
 
+    @GetMapping(path = "/confirm")
+    public String confirm(@RequestParam("token") String token){
+        return authenticationService.confirmToken(token);
+    }
+
 }

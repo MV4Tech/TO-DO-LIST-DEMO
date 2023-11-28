@@ -20,8 +20,30 @@ spring:
   properties:
     hibernate:
       dialect: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    host: localhost
+    port: 2525
+    username: hello
+    password: hello
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+
+
 server:
   port: 8080
+
+
+
 
 
 application:

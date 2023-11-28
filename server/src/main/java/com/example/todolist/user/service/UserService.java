@@ -23,7 +23,12 @@ public interface UserService{
 
     Integer getIdByUsername(String username);
 
+    public User findUserByEmail(String email);
+
+    void enableUser(String email);
+
     void changePassword(ChangePasswordRequest request, Principal connectedUser);
 
     void changeUsername(ChangeUsernameRequest request, Principal connectedUser);
+
 }

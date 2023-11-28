@@ -88,6 +88,19 @@ public class ApiExceptionHandler {
 
     }
 
+    @ExceptionHandler(value = {UserEmailNotVerificated.class})
+    ResponseEntity<Object> handleNotVerificatedEmail(UserEmailNotVerificated e){
+        logger.error("NOT VERIFICATED EMAIL exception occurred: {}", e.getMessage(),e);
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now()
+        );
+        return new ResponseEntity<>(apiException, badRequest);
+
+    }
+
 
 
 }

@@ -55,10 +55,18 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
 
+    @Column(name = "isLocked")
+    private Boolean locked=false;
+
+    @Column(name = "isEnabled")
+    private Boolean enabled=false;
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return role.getAuthorities();
     }
+
 
     @Override
     public String getUsername() {
@@ -72,7 +80,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !locked;
     }
 
     @Override
@@ -82,6 +90,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }
