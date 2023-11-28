@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/register.css'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 import Choveka from '../assets/images/login_image.jpg'
 import { useNavigate } from 'react-router-dom'
@@ -19,18 +19,43 @@ const Register = () => {
     const [passwordError, setPasswordError] = useState("");
     const [duplicateUsernameOrEmailMessage, setDuplicateUsernameOrEmailMessage] = useState(null);
 
+    useEffect(() => {
+      // Function to hide messages after 4 seconds
+      const hideMessages = () => {
+        setPasswordError(null);
+        setDuplicateUsernameOrEmailMessage(null);
+      };
+    
+      if (duplicateUsernameOrEmailMessage || passwordError) {
+        const timeoutId = setTimeout(hideMessages, 3000);
+    
+        // Cleanup timeout on component unmount
+        return () => clearTimeout(timeoutId);
+      }
+    }, [duplicateUsernameOrEmailMessage, passwordError]);
+    
+
     const handleChange = (e) => {
         const value = e.target.value;
         setUser({...user,[e.target.name]: value})
     }
 
     const navigate = useNavigate();
+    //clear password for password doesnt match
+    const clearPassword = () => {
+      setConfirmPassword("");
+      setUser((prevUser) => ({
+        ...prevUser,
+        password: "",
+      }));
+    };
 
     const saveUser = async (e) => {
         e.preventDefault();
         if(confirmPassword != user.password){
             // Passwords don't match
             setPasswordError('Passwords do not match');
+            clearPassword();
             return;
         }else
         setPasswordError(null);
@@ -41,6 +66,19 @@ const Register = () => {
                 navigate("/login")
             }).catch((error) => {
                 setDuplicateUsernameOrEmailMessage(error.response.data.message);
+                if(error.response.data.message === 'The email has already been taken.'){
+                  setUser((prevUser) => ({
+                    ...prevUser,
+                    email: "",
+                  }));
+                }else{
+
+                  setUser((prevUser) => ({
+                    ...prevUser,
+                    username: "",
+                  }));
+                  
+                }
             })
         
             
