@@ -1,5 +1,7 @@
 package com.example.todolist.user.controller;
 
+import com.example.todolist.user.model.ChangePasswordRequest;
+import com.example.todolist.user.model.ChangeUsernameRequest;
 import com.example.todolist.user.model.User;
 import com.example.todolist.user.service.UserService;
 import jakarta.validation.Valid;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -77,6 +80,19 @@ public class AdminController {
         userService.deleteUserById(id);
         logger.debug("Returning http status with no content (delete user with id{}).",id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PatchMapping("/change-password")
+    public ResponseEntity<Void> changePassword(@RequestBody ChangePasswordRequest request
+    ,Principal connectedUser){
+                userService.changePassword(request,connectedUser);
+                return new ResponseEntity(HttpStatus.OK);
+    }
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+    @PatchMapping("/change-username")
+    public ResponseEntity<Void> changeUsername(@RequestBody ChangeUsernameRequest request, Principal connectedUser){
+            userService.changeUsername(request,connectedUser);
+            return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

@@ -1,12 +1,19 @@
 package com.example.todolist.user.service;
 
 import com.example.todolist.exception.ApiRequestException;
+import com.example.todolist.exception.DuplicateUsernameException;
+import com.example.todolist.exception.InvalidCredentialsException;
 import com.example.todolist.exception.UsersNotFoundException;
+import com.example.todolist.user.model.ChangePasswordRequest;
+import com.example.todolist.user.model.ChangeUsernameRequest;
 import com.example.todolist.user.model.User;
 import com.example.todolist.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -16,6 +23,8 @@ import org.slf4j.LoggerFactory;
 public class UserServiceImpl implements UserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     UserRepository userRepository;
@@ -99,7 +108,45 @@ public class UserServiceImpl implements UserService {
         User u = userRepository.findByEmail(email).get();
         u.setEnabled(true);
         userRepository.save(u);
+        }
+
+    public void changePassword(ChangePasswordRequest request, Principal connectedUser) {
+
+        //getting the current connected user
+        var user = (User)((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
+
+        //check if the current password is correct
+        if(!passwordEncoder.matches(request.getOldPassword(), user.getPassword())){
+            throw new InvalidCredentialsException("Wrong password!");
+        }
+        //check if the new passwords are equal
+        if(!request.getNewPassword().equals(request.getConfirmNewPassword())){
+            throw new InvalidCredentialsException("Passwords are not the same!");
+        }
+        //update the password
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        //save the new password
+        userRepository.save(user);
     }
+
+    @Override
+    public void changeUsername(ChangeUsernameRequest request, Principal connectedUser) {
+        //getting the current connected user
+        var user = (User)((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
+
+        //check if the current password is correct
+        if(!passwordEncoder.matches(request.getPassword(), user.getPassword())){
+            throw new InvalidCredentialsException("Wrong password!");
+        }
+
+        //check if the current username is not taken
+        if(userRepository.existsByUsername(request.getNewUsername())){
+            throw new DuplicateUsernameException("The username has already been taken.");
+        }
+
+        user.setUsername(request.getNewUsername());
+        userRepository.save(user);
+
 
 
 }

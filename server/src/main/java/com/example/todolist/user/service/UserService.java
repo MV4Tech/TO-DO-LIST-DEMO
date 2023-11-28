@@ -1,8 +1,11 @@
 package com.example.todolist.user.service;
 
 
+import com.example.todolist.user.model.ChangePasswordRequest;
+import com.example.todolist.user.model.ChangeUsernameRequest;
 import com.example.todolist.user.model.User;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface UserService{
@@ -23,4 +26,9 @@ public interface UserService{
     public User findUserByEmail(String email);
 
     void enableUser(String email);
+
+    void changePassword(ChangePasswordRequest request, Principal connectedUser);
+
+    void changeUsername(ChangeUsernameRequest request, Principal connectedUser);
+
 }

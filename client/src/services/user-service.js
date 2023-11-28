@@ -39,5 +39,29 @@ import { jwtDecode } from "jwt-decode";
             return response.data;
           }
 
+          changePassword(changePasswordRequest){
+            const accessToken = storageService.retrieveAccessToken();
+           
+            return axios.patch(SERVER_URL+`api/v1/admin/change-password`,
+            changePasswordRequest,
+            { headers: { Authorization: `Bearer ${accessToken}` } }
+            )
+
+          }
+
+          changeUsername(changeUsernameRequest){
+            const accessToken = storageService.retrieveAccessToken();
+
+            return axios.patch(SERVER_URL+`api/v1/admin/change-username`,
+            changeUsernameRequest,
+            { headers: { Authorization: `Bearer ${accessToken}` } }
+            )
+            
+
+
+          }
+
+          
+
  }
  export default new UserService();

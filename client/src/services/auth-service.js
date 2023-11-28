@@ -48,6 +48,21 @@ class AuthService extends WebApiService {
     currentDate.setMinutes(currentDate.getMinutes() + 5);
     storageService.saveTokenExpiresDate(currentDate);
   }
+
+  logoutRequest(){
+
+    
+    const response = axios.post(SERVER_URL+"api/v1/auth/logout",{}, this.generateHeader());
+
+    if(response.status == 200){
+      console.log("Status: "+ response.status)
+    }
+    if(response.status != 200){
+      console.log("Status: "+ response.status)
+    }
+    return response;
+
+  }
 }
 
 const authService = new AuthService();

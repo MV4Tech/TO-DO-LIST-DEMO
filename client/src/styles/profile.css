@@ -7,7 +7,7 @@
 
 .moove-button-down{
   position: absolute;
-  margin-top: 180px !important;
+  margin-top: 210px !important;
 
 }
 
@@ -33,7 +33,10 @@
 .extra-margin-top {
     margin-top: 180px !important; /* You can adjust the value as needed */   
 }
-
+.smaller-input {
+  width: 500px; /* Adjust the width accordingly */
+  
+}
 
 
 
