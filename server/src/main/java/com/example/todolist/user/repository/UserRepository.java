@@ -1,6 +1,7 @@
 package com.example.todolist.user.repository;
 
 import com.example.todolist.user.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,5 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     Integer findUserIdByUsername(String username);
 
 
+    Optional<User> findByEmail(String email);
 }
