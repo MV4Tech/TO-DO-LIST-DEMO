@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/login.css";
 import Chasovnika from "../assets/images/login_nova.png";
 import authService from "../services/auth-service";
@@ -13,6 +13,21 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [invalidCredentialsMessage, setInvalidCredentialsMessage] = useState(null);
   let navigate = useNavigate();
+useEffect(() => {
+  const hideMessages = () => {
+    setInvalidCredentialsMessage(null);
+  };
+
+  if(invalidCredentialsMessage){
+    const timeoutId = setTimeout(hideMessages, 3000);
+
+    return ()=> clearTimeout(timeoutId);
+  }
+
+
+  
+}, [invalidCredentialsMessage])
+
 
 const submit = async (e) => {
     e.preventDefault();
@@ -22,6 +37,8 @@ const submit = async (e) => {
     } catch (err) {
         // show error to user in user-friendly way
         setInvalidCredentialsMessage(err.response.data.message);
+        setUsername("");
+        setPassword("");
     }
   };
 
