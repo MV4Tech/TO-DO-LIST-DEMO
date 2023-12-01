@@ -28,7 +28,11 @@ public enum Role {
                     USER_READ,
                     USER_UPDATE,
                     USER_CREATE,
-                    USER_DELETE
+                    USER_DELETE,
+                    TASK_READ,
+                    TASK_UPDATE,
+                    TASK_CREATE,
+                    TASK_DELETE
             )
     );
 
