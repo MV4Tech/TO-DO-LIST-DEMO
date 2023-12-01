@@ -1,0 +1,49 @@
+h2 {
+  font-size: 3em;
+  font-family: var(--font-family-poppins,"Poppins");
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 45px;
+  letter-spacing: -2px;
+}
+@font-face {
+  font-family: GreatVibes;
+  src: url('/static_files/fonts/gv.ttf');
+}
+
+.greatVibesFont {
+  font-family : GreatVibes;
+}
+
+.navbar-brand img {
+  width:100%;
+  max-width:640px;
+  position:absolute;
+  transition:all 300ms linear;
+  transform-origin: 0% 0%;
+}
+
+@media screen and (max-width:956px){
+  .navbar-brand img {
+    width:100%;
+    max-width:240px;
+    position:relative;
+  }
+}
+
+img.consize {
+  transform : translateY(-20px) scale(0.25);
+}
+#mainNav {
+  transition : background 300ms linear;
+}
+
+.glassEffect{
+  /* From https://css.glass */
+background: rgba(113, 123, 199, 0.21);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.4px);
+-webkit-backdrop-filter: blur(4.4px);
+border: 1px solid rgba(113, 123, 199, 0.3);
+}

@@ -1,14 +1,13 @@
-body{
-    margin:0;
-    background-image: url('src/assets/images/backgground.webp');
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center center; /* Center the image horizontally and vertically */
-    background-attachment: fixed; /* Fixed background image */
-    background-repeat: no-repeat;
-  }
+h2 {
+  font-size: 3em;
+  font-family: var(--font-family-poppins,"Poppins");
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 45px;
+  letter-spacing: -2px;
+}
   .header{
     display: flex;
-    background-color: #FCFAA3;
     flex-direction: row;
     justify-content: space-between;
     height: 300px;
@@ -51,10 +50,16 @@ body{
     font-size: 24px;
   }
   
-  .start-circle-container{
-    margin-right: 70px ;
+  .start-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 70px;
     margin-bottom: 30px;
-  }
+    text-align: center;
+}
+  
   .circle{
     display: block;
     margin-left: auto;
@@ -62,3 +67,4 @@ body{
     height: 300px;
     margin-top: 105px;
   }
+

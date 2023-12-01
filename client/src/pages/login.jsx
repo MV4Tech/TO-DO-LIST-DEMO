@@ -4,7 +4,7 @@ import Chasovnika from "../assets/images/login_nova.png";
 import authService from "../services/auth-service";
 import {  useNavigate } from "react-router-dom";
 import Footer from "./dashboard/footer";
-
+import LoginNavbar from './loginNavbar.jsx'
 
 
 
@@ -53,7 +53,10 @@ const submit = async (e) => {
   };
 
   return (
-    <section className="vh-100" >
+    <>
+
+    <LoginNavbar/>
+    <section className="vh-100" style={{ marginTop: '5rem' }}>
     <div className="container h-100">
       <div className="row d-flex justify-content-center align-items-center h-100">
         <div className="col-lg-12 col-xl-11">
@@ -120,7 +123,7 @@ const submit = async (e) => {
     <Footer/>
   </section>
 
-
+  </>
   );
 };
 
