@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import storageService from "../../services/storage-service";
 import { useNavigate } from "react-router-dom";
 import '../../styles/dashboard.css';
@@ -8,8 +9,10 @@ import Footer from "./footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee,faAnglesDown } from '@fortawesome/free-solid-svg-icons'
 import {useRef} from "react";
+import DashboardNavbar from './dashboardNavbar.jsx'
 
 const Dashboard = () => {
+
   const navigate = useNavigate();
 
   const tasks = useRef(null);
@@ -25,7 +28,7 @@ const Dashboard = () => {
   return (
     <>    
     
-
+      <DashboardNavbar/>
       <Header />
       <div className="text-center mt-4">
         <button style={{ border: 'none', outline: 'none', background: 'none'}} onClick={() => scrollToSection(tasks)}>

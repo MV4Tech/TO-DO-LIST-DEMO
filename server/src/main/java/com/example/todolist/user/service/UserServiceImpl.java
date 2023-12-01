@@ -132,21 +132,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public void changeUsername(ChangeUsernameRequest request, Principal connectedUser) {
         //getting the current connected user
-        var user = (User)((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
+        var user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
 
         //check if the current password is correct
-        if(!passwordEncoder.matches(request.getPassword(), user.getPassword())){
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new InvalidCredentialsException("Wrong password!");
         }
 
         //check if the current username is not taken
-        if(userRepository.existsByUsername(request.getNewUsername())){
+        if (userRepository.existsByUsername(request.getNewUsername())) {
             throw new DuplicateUsernameException("The username has already been taken.");
         }
 
         user.setUsername(request.getNewUsername());
         userRepository.save(user);
 
-
+    }
 
 }

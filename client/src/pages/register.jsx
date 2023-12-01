@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/register.css'
 import { useState,useEffect } from 'react'
-
+import LoginNavbar from './loginNavbar'
 import Choveka from '../assets/images/login_image.jpg'
 import { useNavigate } from 'react-router-dom'
 import authService from '../services/auth-service'
@@ -87,7 +87,10 @@ const Register = () => {
 
 
   return (
-    <section className="vh-100" >
+    <>
+    
+    <LoginNavbar/>
+    <section className="vh-100" style={{ marginTop: '5rem' }}>
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
@@ -168,7 +171,7 @@ const Register = () => {
       </div>
       <Footer/>
     </section>
-    
+    </>
   )
 }
 
