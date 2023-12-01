@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -19,6 +20,14 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request){
             return ResponseEntity.ok(authenticationService.register(request));
     }
+
+    @PostMapping("/authenticate-admin")
+    public ResponseEntity<AuthenticationResponse> authenticateForAdmin(@RequestBody AuthenticationRequest request){
+
+        return ResponseEntity.ok(authenticationService.authenticateAdmin(request));
+
+    }
+
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){

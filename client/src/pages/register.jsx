@@ -3,9 +3,10 @@ import '../styles/register.css'
 import { useState,useEffect } from 'react'
 
 import Choveka from '../assets/images/login_image.jpg'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom';
 import authService from '../services/auth-service'
 import Footer from "./dashboard/footer";
+
 
 const Register = () => {
 
@@ -18,8 +19,14 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword,] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [duplicateUsernameOrEmailMessage, setDuplicateUsernameOrEmailMessage] = useState(null);
+   
+
+  
 
     useEffect(() => {
+
+  
+  
       // Function to hide messages after 4 seconds
       const hideMessages = () => {
         setPasswordError(null);
@@ -27,7 +34,7 @@ const Register = () => {
       };
     
       if (duplicateUsernameOrEmailMessage || passwordError) {
-        const timeoutId = setTimeout(hideMessages, 3000);
+        const timeoutId = setTimeout(hideMessages, 4000);
     
         // Cleanup timeout on component unmount
         return () => clearTimeout(timeoutId);
@@ -63,7 +70,9 @@ const Register = () => {
            await authService.makeRegisterRequest(user)
             .then((response) => {
                 console.log(response);
-                navigate("/login")
+                   // Display success alert
+                  alert("Subject: Tick, Tock! 🕒 Verify Your Account Now!\nHi "+user.username+",\n\nHope you're doing awesome! 🌈 Quick thing: we need you to give your account a thumbs up by clicking the link we sent to your email. Easy peasy! Need a hand? Holler at us.\n\nCheers,\nYour TODO List 🚀")
+                 navigate('/login');
             }).catch((error) => {
                 setDuplicateUsernameOrEmailMessage(error.response.data.message);
                 if(error.response.data.message === 'The email has already been taken.'){
@@ -98,6 +107,7 @@ const Register = () => {
 
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
+                   
                     <form onSubmit={saveUser}>
 
                       
