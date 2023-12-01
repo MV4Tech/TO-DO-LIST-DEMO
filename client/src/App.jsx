@@ -11,9 +11,13 @@ import AuthGuardWhenLogout from './components/AuthGuardWhenLogout';
 import AuthGuardWhenLogin from './components/AuthGuardWhenLogin';
 import Register from './pages/register';
 import Login from './pages/login';
+import AdminLogin from './pages/adminLogin';
 
 import Dashboard from './pages/dashboard/dashboard';
 import Profile from './pages/dashboard/profile';
+import AdminDashboard from './pages/adminDashboard/adminDashboard';
+import AdminProfile from './pages/adminDashboard/adminProfile';
+import AdminPage from './pages/adminDashboard/adminPage';
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -22,12 +26,19 @@ const App = createBrowserRouter(
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="register" element={<Register />} />
-            <Route path="login" element={<Login />} />       
+            <Route path="login" element={<Login />} />
+            <Route path="adminLogin" element={<AdminLogin />} />
+            
+           
           </Route>
         </Route>
          {/* <Route element={<AuthGuardWhenLogin />}>*/}
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="adminDashboard" element={<AdminDashboard />} />
           <Route path="profile" element={<Profile/>} />
+          <Route path="adminProfile" element={<AdminProfile/>} />
+          <Route path="adminPage" element={<AdminPage/>} />
+
         {/*</Route>*/}
     </>
   )

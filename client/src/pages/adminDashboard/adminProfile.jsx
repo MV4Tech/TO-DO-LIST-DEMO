@@ -3,12 +3,12 @@ import '../../styles/profile.css';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import storageService from '../../services/storage-service.js';
-import Footer from "../dashboard/footer";
-import UserService from '../../services/user-service';
+import Footer from "../adminDashboard/adminFooter.jsx";
+import UserService from '../../services/user-service.js';
 import authService from '../../services/auth-service.js';
-import DashboardNavbar from '../../pages/dashboard/dashboardNavbar.jsx'
 
-const Profile = () => {
+
+const AdminProfile = () => {
 
   const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ const Profile = () => {
     id:"",
     username:"",
     email:"",
+    role:""
   });
 
   const [changePassword, setChangePassword] = useState({
@@ -158,15 +159,16 @@ useEffect(() => {
     <link
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     rel="stylesheet"/>
-  <DashboardNavbar/>
+  
     <div className="container rounded bg-white mt-5 mb-3 extra-margin-top">
         <div className="row">
             <div className="col-md-4 border-right">
                 <div className="d-flex flex-column align-items-center text-center p-3 py-5 mt-6"><i className="fa fa-4x fa-user my-2"></i>
                 <span className="font-weight-bold">{user.username}</span>
                 <span className="text-black-50">{user.email}</span>
+                <span className="text-black-50">{user.role}</span>
 
-                <span className="text-black mt-5 " style={{fontSize: '20px', fontWeight: 'bold'}}>Logout</span>
+                <span className="text-black mt-4 ">Logout</span>
                 <span className='moove-button-down'><Button onClick={logout} variant="dark" style={{ width: '110px'}}>
                 <i className="fa fa-power-off"></i>
                   </Button></span>
@@ -177,9 +179,9 @@ useEffect(() => {
                 <div className="p-3 py-5">
                     <div className="d-flex justify-content-between align-items-center mb-3">
                         <div className="d-flex flex-row align-items-center back">
-                        <a className='mb-1' onClick={() => {navigate("/dashboard");}} style={{ cursor: 'pointer', color: "black",textDecoration: 'none',fontSize: '18px', fontWeight: 'bold'}}><i className="fa fa-long-arrow-left mx-2 mr-1 mb-1"></i>Back to home</a>
+                        <a className='mb-1' onClick={() => {navigate("/adminDashboard");}} style={{ cursor: 'pointer', color: "black",textDecoration: 'none'}}><i className="fa fa-long-arrow-left mx-2 mr-1 mb-1"></i>Back to home</a>
                         </div>
-                        <h6 className="text-right"  style={{fontSize: '20px', fontWeight: 'bold'}}>Edit Profile</h6>
+                        <h6 className="text-right">Edit Profile</h6>
                     </div>
 
                     <Button
@@ -319,4 +321,4 @@ useEffect(() => {
   )
 }
 
-export default Profile
+export default AdminProfile

@@ -121,11 +121,9 @@ public class AuthenticationService {
                             request.getPassword()
                     )
             );
+
             var user = userRepository.findByUsername(request.getUsername()).orElseThrow(() -> new UsersNotFoundException("User Doesn't Exists"));
-            if(user.getEnabled()){
-
-
-
+            if(user.getEnabled() && user.getRole().name().equals("USER")){
 
             var jwtToken = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
@@ -136,7 +134,7 @@ public class AuthenticationService {
                     .refreshToken(refreshToken)
                     .build();
             }else{
-                throw new UsersNotFoundException("Email not verificated!");
+                throw new UsersNotFoundException("Invalid username or password!");
             }
         }catch (BadCredentialsException e){
             throw new InvalidCredentialsException("Invalid username or password!");
@@ -287,5 +285,35 @@ public class AuthenticationService {
                 "  </tbody></table><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
                 "\n" +
                 "</div></div>";
+    }
+
+    public AuthenticationResponse authenticateAdmin(AuthenticationRequest request) {
+        try{
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getUsername(),
+                            request.getPassword()
+                    )
+            );
+
+            var user = userRepository.findByUsername(request.getUsername()).orElseThrow(() -> new UsersNotFoundException("User Doesn't Exists"));
+            if(user.getEnabled() && user.getRole().name().equals("ADMIN")){
+
+                var jwtToken = jwtService.generateToken(user);
+                var refreshToken = jwtService.generateRefreshToken(user);
+                revokedAllUserTokens(user);
+                savedUserToken(user, jwtToken);
+                return AuthenticationResponse.builder()
+                        .accessToken(jwtToken)
+                        .refreshToken(refreshToken)
+                        .build();
+            }else{
+                throw new UsersNotFoundException("Invalid username or password!");
+            }
+        }catch (BadCredentialsException e){
+            throw new InvalidCredentialsException("Invalid username or password!");
+        }
+
+
     }
 }
