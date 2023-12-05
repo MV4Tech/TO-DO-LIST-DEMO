@@ -71,6 +71,21 @@ public class AuthenticationService {
             throw new DuplicateEmailException("The email has already been taken.");
         }
 
+        char [] username = request.getUsername().toCharArray();
+
+        for(int i = 0 ; i < request.getUsername().length(); i++){
+            if(username[i] == ' '){
+
+                throw new InvalidCredentialsException("Username must not contains intervals.");
+            }
+        }
+        char [] email = request.getEmail().toCharArray();
+        for(int i = 0 ; i < request.getEmail().length(); i++){
+            if(email[i] == ' '){
+
+                throw new InvalidCredentialsException("Email must not contains intervals.");
+            }
+        }
 
             var user = User.builder()
                     .username(request.getUsername())
@@ -114,6 +129,14 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
 
+        char [] username = request.getUsername().toCharArray();
+
+        for(int i = 0 ; i < request.getUsername().length(); i++){
+            if(username[i] == ' '){
+
+                throw new InvalidCredentialsException("Username must not contains intervals.");
+            }
+        }
         try{
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(

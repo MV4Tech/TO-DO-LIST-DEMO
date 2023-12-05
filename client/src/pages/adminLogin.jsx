@@ -3,7 +3,8 @@ import "../styles/adminLogin.css";
 import Klucha from "../assets/images/wrench.png";
 import authService from "../services/auth-service";
 import {  useNavigate } from "react-router-dom";
-import Footer from "./adminDashboard/adminFooter";
+import Footer from "./dashboard/footer.jsx";
+import AdminDashboardNavbar2 from "./adminDashboard/adminDashboardNavbar";
 
 
 const AdminLogin = () => {
@@ -52,7 +53,8 @@ const AdminLogin = () => {
 
 
   return (
-    <section className="vh-100" >
+    <>
+    <section className="vh-100" style={{marginTop: '5rem'}} >
     <div className="container h-100">
       <div className="row d-flex justify-content-center align-items-center h-100">
         <div className="col-lg-12 col-xl-11">
@@ -116,6 +118,7 @@ const AdminLogin = () => {
     </div>
     <Footer/>
   </section>
+  </>
   )
 }
 

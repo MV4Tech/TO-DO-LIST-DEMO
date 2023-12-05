@@ -18,6 +18,7 @@ import Profile from './pages/dashboard/profile';
 import AdminDashboard from './pages/adminDashboard/adminDashboard';
 import AdminProfile from './pages/adminDashboard/adminProfile';
 import AdminPage from './pages/adminDashboard/adminPage';
+import ForgotPassword from './pages/forgotPassword';
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -38,6 +39,7 @@ const App = createBrowserRouter(
           <Route path="profile" element={<Profile/>} />
           <Route path="adminProfile" element={<AdminProfile/>} />
           <Route path="adminPage" element={<AdminPage/>} />
+          <Route path="forgotPassword" element={<ForgotPassword/>}/>
 
         {/*</Route>*/}
     </>

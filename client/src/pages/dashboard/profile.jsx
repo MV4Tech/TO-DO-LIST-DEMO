@@ -141,7 +141,7 @@ useEffect(() => {
 
           const response = await authService.logoutRequest();
           storageService.deleteUserData();       
-          navigate("/");
+          navigate("/login");
           
         }catch(error){
           console.log("Error is: "+error)
@@ -166,7 +166,7 @@ useEffect(() => {
                 <span className="font-weight-bold">{user.username}</span>
                 <span className="text-black-50">{user.email}</span>
 
-                <span className="text-black mt-5 " style={{fontSize: '20px', fontWeight: 'bold'}}>Logout</span>
+                <span className="text-black mt-5 ">Logout</span>
                 <span className='moove-button-down'><Button onClick={logout} variant="dark" style={{ width: '110px'}}>
                 <i className="fa fa-power-off"></i>
                   </Button></span>
@@ -177,9 +177,9 @@ useEffect(() => {
                 <div className="p-3 py-5">
                     <div className="d-flex justify-content-between align-items-center mb-3">
                         <div className="d-flex flex-row align-items-center back">
-                        <a className='mb-1' onClick={() => {navigate("/dashboard");}} style={{ cursor: 'pointer', color: "black",textDecoration: 'none',fontSize: '18px', fontWeight: 'bold'}}><i className="fa fa-long-arrow-left mx-2 mr-1 mb-1"></i>Back to home</a>
+                        <a className='mb-1' onClick={() => {navigate("/dashboard");}} style={{ cursor: 'pointer', color: "black",textDecoration: 'none'}}><i className="fa fa-long-arrow-left mx-2 mr-1 mb-1"></i>Back to home</a>
                         </div>
-                        <h6 className="text-right"  style={{fontSize: '20px', fontWeight: 'bold'}}>Edit Profile</h6>
+                        <h6 className="text-right">Edit Profile</h6>
                     </div>
 
                     <Button

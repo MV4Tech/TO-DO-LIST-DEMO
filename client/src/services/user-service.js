@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SERVER_URL } from "../shared/constants";
+import { SERVER_URL,SERVER_ADMIN_URL } from "../shared/constants";
 import storageService from "./storage-service";
 import { jwtDecode } from "jwt-decode";
 
@@ -57,13 +57,35 @@ import { jwtDecode } from "jwt-decode";
             changeUsernameRequest,
             { headers: { Authorization: `Bearer ${accessToken}` } }
             )
-            
-
-
           }
      
 
-          
+
+          getAllUsers(){
+            const accessToken = storageService.retrieveAccessToken();
+
+            return axios.get(SERVER_URL+`api/v1/admin/get-all-users`,
+            { headers: { Authorization: `Bearer ${accessToken}` } }
+            )
+          }
+
+          getCountTaskByUsername(username){
+            const accessToken = storageService.retrieveAccessToken();
+
+            return axios.get(SERVER_URL+`api/v1/task/get-number-of-tasks-by-username/` + username,
+            { headers: { Authorization: `Bearer ${accessToken}` } }
+            )
+          }
+
+          // DELETE TASK BY ID 
+    deleteUserById(id){
+ 
+      const accessToken = storageService.retrieveAccessToken();
+        return axios.delete(`${SERVER_ADMIN_URL}/delete-user/${id}`, { headers: { Authorization: `Bearer ${accessToken}` } });
+        }
+  
+
+
 
  }
  export default new UserService();

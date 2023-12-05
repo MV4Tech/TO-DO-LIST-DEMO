@@ -1,6 +1,8 @@
 package com.example.todolist.user.controller;
 
 import com.example.todolist.config.JwtService;
+import com.example.todolist.token.Token;
+import com.example.todolist.token.TokenType;
 import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import com.example.todolist.user.service.UserService;
@@ -54,6 +56,9 @@ class AdminControllerTest {
                 .email("aidede@Abv.bg")
                 .createdDate(LocalDateTime.now())
                .role(Role.USER)
+               .tokens(List.of(new Token(2,"token1", TokenType.BEARER,false,false,null),new Token(3,"token2", TokenType.BEARER,false,false,null)))
+               .enabled(true)
+               .locked(false)
                 .build();
 
         Mockito.when(userService.saveUser(inputUser)).thenReturn(user);

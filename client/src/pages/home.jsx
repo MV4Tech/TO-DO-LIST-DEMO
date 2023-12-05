@@ -17,7 +17,7 @@ const Home = () => {
     <>
     <Navbar/>
     <div>
-          <h2 className="display-3 text-center fw-bold" style={{ paddingTop: '70vh', paddingBottom: '45vh', color: 'black', fontSize: '88px'}}>
+          <h2 className="display-3 text-center fw-bold" style={{ paddingTop: '57vh', paddingBottom: '45vh', color: 'black', fontSize: '88px'}}>
             In Searching of Оrderliness
           </h2>
         </div>

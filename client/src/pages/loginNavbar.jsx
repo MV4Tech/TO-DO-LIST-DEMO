@@ -34,11 +34,6 @@ const LoginNavbar = () => {
               
             </li>
             <li className="nav-item">
-              <a style={{ fontSize: '19px'}} className="nav-link mx-2 fw-bold" href="#">
-                Products
-              </a>
-            </li>
-            <li className="nav-item">
                     <Link  style={{ textDecoration: 'none',
                         color: 'black'}}
                     to="/register">

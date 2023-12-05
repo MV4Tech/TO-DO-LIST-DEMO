@@ -6,6 +6,7 @@ import storageService from '../../services/storage-service.js';
 import Footer from "../adminDashboard/adminFooter.jsx";
 import UserService from '../../services/user-service.js';
 import authService from '../../services/auth-service.js';
+import AdminDashboardNavbar2 from './adminDashboardNavbar.jsx';
 
 
 const AdminProfile = () => {
@@ -142,7 +143,7 @@ useEffect(() => {
 
           const response = await authService.logoutRequest();
           storageService.deleteUserData();       
-          navigate("/");
+          navigate("/adminLogin");
           
         }catch(error){
           console.log("Error is: "+error)
@@ -156,10 +157,11 @@ useEffect(() => {
 
    
     <>    
+
     <link
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     rel="stylesheet"/>
-  
+    <AdminDashboardNavbar2/>
     <div className="container rounded bg-white mt-5 mb-3 extra-margin-top">
         <div className="row">
             <div className="col-md-4 border-right">

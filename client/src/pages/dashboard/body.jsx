@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/bodyTable.css";
 import TaskService from "../../services/task-service";
 import Task from "./task";
-import storageService from "../../services/storage-service";
+
 
 const Body = () => {
   const [loading, setLoading] = useState(true);

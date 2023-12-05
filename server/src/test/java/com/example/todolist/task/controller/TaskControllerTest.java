@@ -3,6 +3,8 @@ package com.example.todolist.task.controller;
 import com.example.todolist.config.JwtService;
 import com.example.todolist.task.model.Task;
 import com.example.todolist.task.service.TaskService;
+import com.example.todolist.token.Token;
+import com.example.todolist.token.TokenType;
 import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +24,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -49,7 +53,10 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg", Role.USER, LocalDateTime.now()))
+                .user(new User(1,"Ivancho","wasd","asd@abv.bg", Role.USER, LocalDateTime.now(),
+                        List.of(new Token(4,"token1", TokenType.BEARER,false,false,null),new Token(5,"token2", TokenType.BEARER,false,false,null)),
+                        true,
+                        true))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -60,7 +67,10 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times Me")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
+                .user(new User(2,"Vanko","wasd","asdd@abv.bg", Role.USER, LocalDateTime.now(),
+                        List.of(new Token(6,"token1", TokenType.BEARER,false,false,null),new Token(8,"token2", TokenType.BEARER,false,false,null)),
+                        true,
+                        true))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -75,7 +85,10 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("I try so hard Many Times")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
+                .user(new User(3,"Vanko6","wasd","asddd@abv.bg", Role.USER, LocalDateTime.now(),
+                        List.of(new Token(9,"token1", TokenType.BEARER,false,false,null),new Token(10,"token2", TokenType.BEARER,false,false,null)),
+                        true,
+                        true))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -147,7 +160,10 @@ class TaskControllerTest {
                 .topic("Try")
                 .description("Yea Mu name is Gurko")
                 .priority(6)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER, LocalDateTime.now()))
+                .user(new User(5,"Vanko6","wasdaa","asdaad@abv.bg", Role.USER, LocalDateTime.now(),
+                        List.of(new Token(11,"token1", TokenType.BEARER,false,false,null),new Token(12,"token2", TokenType.BEARER,false,false,null)),
+                        true,
+                        true))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
