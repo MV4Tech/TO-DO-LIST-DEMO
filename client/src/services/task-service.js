@@ -66,6 +66,12 @@ class TaskService{
             }
           });
         }
+
+       getRandomQuote(){
+  
+      return axios.get('https://api.quotable.io/random');
+        
+    }
         
      
 

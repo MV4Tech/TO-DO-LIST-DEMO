@@ -52,7 +52,7 @@ public class User implements UserDetails {
     @Column(name="CREATED_DATE")
     private LocalDateTime createdDate;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Token> tokens;
 
     @Column(name = "isLocked")

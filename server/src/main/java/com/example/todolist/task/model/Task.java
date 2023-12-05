@@ -32,6 +32,8 @@ public class Task {
     private LocalDateTime endDate;
     @Column(name = "IS_ACTIVE")
     private Boolean isActive;
+    @Column(name = "IS_EMAIL_REMAINDER_SENT")
+    private Boolean isEmailRemainderSent = false;
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;

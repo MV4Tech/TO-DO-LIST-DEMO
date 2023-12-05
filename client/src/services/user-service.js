@@ -5,10 +5,11 @@ import { jwtDecode } from "jwt-decode";
 
 
     class UserService{
+      
 
         getUserById(id){
             const accessToken = storageService.retrieveAccessToken();
-            
+
             return axios.get(SERVER_URL+`api/v1/admin/get-user/${id}`
             ,{headers: {Authorization: `Bearer ${accessToken}`} })
             
@@ -51,7 +52,7 @@ import { jwtDecode } from "jwt-decode";
 
           changeUsername(changeUsernameRequest){
             const accessToken = storageService.retrieveAccessToken();
-
+          
             return axios.patch(SERVER_URL+`api/v1/admin/change-username`,
             changeUsernameRequest,
             { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -60,6 +61,7 @@ import { jwtDecode } from "jwt-decode";
 
 
           }
+     
 
           
 
