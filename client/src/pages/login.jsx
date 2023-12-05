@@ -5,6 +5,7 @@ import authService from "../services/auth-service";
 import {  useNavigate } from "react-router-dom";
 import Footer from "./dashboard/footer";
 import LoginNavbar from './loginNavbar.jsx'
+import ForgotPassword from "./forgotPassword.jsx";
 
 
 
@@ -96,8 +97,11 @@ const submit = async (e) => {
                       </div>
 
                       
-                      <div className="form-check d-flex justify-content-center mb-5">Don't have an account yet?&nbsp;
+                      <div className="form-check d-flex justify-content-center mb-3">Don't have an account yet?&nbsp;
                       <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/register")}>Sign up here</a>
+                      </div>
+                      <div className="form-check d-flex justify-content-center mb-5">Forget Password?&nbsp;
+                      <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/forgotPassword")}>Reset Password</a>
                       </div>
 
                     <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

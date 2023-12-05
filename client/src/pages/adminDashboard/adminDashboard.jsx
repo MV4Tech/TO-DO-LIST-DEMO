@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import '../../styles/dashboard.css';
 import Header from "./adminHeader";
 import Body from "./adminBody";
-import Footer from "./adminFooter";
+import Footer from "./adminFooter.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee,faAnglesDown } from '@fortawesome/free-solid-svg-icons'
 import {useRef} from "react";
+import AdminDashboardNavbar2 from "./adminDashboardNavbar";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
   return (
     <>    
     
-
+      <AdminDashboardNavbar2/>
       <Header />
       <div className="text-center mt-4">
         <button style={{ border: 'none', outline: 'none', background: 'none'}} onClick={() => scrollToSection(tasks)}>

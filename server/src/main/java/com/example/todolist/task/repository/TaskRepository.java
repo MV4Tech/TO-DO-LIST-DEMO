@@ -22,5 +22,10 @@ public interface TaskRepository extends JpaRepository<Task,Integer>{
     @Query("SELECT t FROM Task t JOIN t.user u WHERE u.username = :username")
     List<Task> findAllTasksByUsername(@Param("username") String username);
 
+    @Query("SELECT COUNT(t.id) AS task_count " +
+            "FROM User u " +
+            "LEFT JOIN Task t ON u.id = t.user.id " +
+            "WHERE u.username = :username ")
+    Integer findTaskCountByUsername(@Param("username") String username);
 
 }

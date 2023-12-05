@@ -125,5 +125,11 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(currTask);
     }
 
+    @Override
+    public int getNumberOfTasksByUsername(String username) {
+        logger.info("Received request to getNumberOfTasksByUsername.");
+        return taskRepository.findTaskCountByUsername(username);
+    }
+
 
 }

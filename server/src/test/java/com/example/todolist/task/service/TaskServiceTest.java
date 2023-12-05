@@ -2,6 +2,8 @@ package com.example.todolist.task.service;
 
 import com.example.todolist.task.model.Task;
 import com.example.todolist.task.repository.TaskRepository;
+import com.example.todolist.token.Token;
+import com.example.todolist.token.TokenType;
 import com.example.todolist.user.model.Role;
 import com.example.todolist.user.model.User;
 import org.assertj.core.api.Assertions;
@@ -43,7 +45,10 @@ class TaskServiceTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg", Role.USER,LocalDateTime.now()))
+                .user(new User(2,"Vankoa","wasd","asdda@abv.bg", Role.USER, LocalDateTime.now(),
+                        List.of(new Token(2,"token1", TokenType.BEARER,false,false,null),new Token(3,"token2", TokenType.BEARER,false,false,null)),
+                        true,
+                        true))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -54,7 +59,10 @@ class TaskServiceTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
+                .user(new User(1,"Vanko","wasd","asdd@abv.bg", Role.USER, LocalDateTime.now(),
+                        List.of(new Token(6,"token1", TokenType.BEARER,false,false,null),new Token(8,"token2", TokenType.BEARER,false,false,null)),
+                        true,
+                        true))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -86,7 +94,10 @@ class TaskServiceTest {
             .topic("Try")
             .description("I try so hard")
             .priority(1)
-            .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
+            .user(new User(5,"Vafnkoa","wasd","asdfda@abv.bg", Role.USER, LocalDateTime.now(),
+                    List.of(new Token(6,"token1", TokenType.BEARER,false,false,null),new Token(7,"token2", TokenType.BEARER,false,false,null)),
+                    true,
+                    true))
             .isActive(true)
             .endDate(LocalDateTime.now())
             .startDate(LocalDateTime.now())
@@ -96,7 +107,10 @@ class TaskServiceTest {
             .topic("Try")
             .description("I try so hard")
             .priority(1)
-            .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
+            .user(new User(7,"Vankodfa","wasd","asddfda@abv.bg", Role.USER, LocalDateTime.now(),
+                    List.of(new Token(8,"token1", TokenType.BEARER,false,false,null),new Token(9,"token2", TokenType.BEARER,false,false,null)),
+                    true,
+                    true))
             .isActive(true)
             .endDate(LocalDateTime.now())
             .startDate(LocalDateTime.now())
@@ -133,7 +147,10 @@ class TaskServiceTest {
                 .topic("Try")
                 .description("I try so hard")
                 .priority(1)
-                .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
+                .user(new User(12,"Vafdnkoa","wasd","asdddfa@abv.bg", Role.USER, LocalDateTime.now(),
+                        List.of(new Token(13,"token1", TokenType.BEARER,false,false,null),new Token(14,"token2", TokenType.BEARER,false,false,null)),
+                        true,
+                        true))
                 .isActive(true)
                 .endDate(LocalDateTime.now())
                 .startDate(LocalDateTime.now())
@@ -155,7 +172,10 @@ class TaskServiceTest {
                     .topic("Try")
                     .description("I try so hard Many Times")
                     .priority(1)
-                    .user(new User(1,"Ivancho","wasd","asd@abv.bg",Role.USER,LocalDateTime.now()))
+                    .user(new User(9,"Vghankoa","wasd","asghda@abv.bg", Role.USER, LocalDateTime.now(),
+                            List.of(new Token(11,"token1", TokenType.BEARER,false,false,null),new Token(12,"token2", TokenType.BEARER,false,false,null)),
+                            true,
+                            true))
                     .isActive(true)
                     .endDate(LocalDateTime.now())
                     .startDate(LocalDateTime.now())

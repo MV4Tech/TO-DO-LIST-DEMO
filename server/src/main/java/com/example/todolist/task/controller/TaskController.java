@@ -85,5 +85,13 @@ public class TaskController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    // get number of tasks by username
+    @GetMapping("/get-number-of-tasks-by-username/{username}")
+    @PreAuthorize("hasAuthority('task:read')")
+    public ResponseEntity<Integer> getNumbOfTasksByUsername(@PathVariable("username") String username){
+
+        return ResponseEntity.ok(taskService.getNumberOfTasksByUsername(username));
+    }
+
 
 }

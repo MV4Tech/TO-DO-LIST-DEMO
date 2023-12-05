@@ -17,4 +17,6 @@ public interface TaskService {
     List<Task> getTaskByUsername(String username);
 
     void setTaskAsInactive(int id);
+
+    int getNumberOfTasksByUsername(String username);
 }
