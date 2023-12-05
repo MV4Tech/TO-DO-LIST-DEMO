@@ -188,7 +188,7 @@ function EditTaskModal({task}) {
       <DemoContainer   components={['DateTimePicker']}>
         <DateTimePicker
         name="endDate"
-        value={(editTask.endDate ? dayjs(task.startDate) : null)}
+        value={(editTask.endDate ? dayjs(task.endDate) : null)}
         onChange={(date) => handleEndDateChange(date)}
         label="pick a deadline" />
       </DemoContainer>

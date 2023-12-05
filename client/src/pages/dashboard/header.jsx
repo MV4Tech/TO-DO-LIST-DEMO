@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ResolvedTaskModal from "./resolvedHeaderTaskModal.jsx";
 import '../../styles/dashboard.css';
 import TaskModal from './taskModal.jsx'
+import QuoteModal from "./quoteModal.jsx";
 
 
 
@@ -11,6 +12,7 @@ import TaskModal from './taskModal.jsx'
 const Header = () => {
     const navigate = useNavigate();
 
+    
    
 
   return (
@@ -51,16 +53,7 @@ const Header = () => {
                   </a>
                 </div>
                 <div className="d-flex">
-                  <a href="#"  className="w-50 pr-3 p-2">
-                    <div className="card border-0 border-bottom-yellow shadow-lg shadow-hover">
-                      <div className="card-body text-center">
-                        <div className="text-center">
-                          <i className="fa fa-4x fa-code my-2"></i>
-                        </div>
-                        DEVS
-                      </div>
-                    </div>
-                  </a>
+                  <QuoteModal/>
 
                   <ResolvedTaskModal/>
                   

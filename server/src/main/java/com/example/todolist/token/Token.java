@@ -3,10 +3,7 @@ package com.example.todolist.token;
 import com.example.todolist.user.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Data
@@ -30,6 +27,7 @@ public class Token {
     private boolean revoked;
     @JsonIgnore
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name="user_id")
     private User user;
 }

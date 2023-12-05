@@ -10,12 +10,43 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee,faAnglesDown } from '@fortawesome/free-solid-svg-icons'
 import {useRef} from "react";
 import DashboardNavbar from './dashboardNavbar.jsx'
+import userService from "../../services/user-service.js";
 
 const Dashboard = () => {
 
   const navigate = useNavigate();
 
   const tasks = useRef(null);
+
+
+
+    // const sendReminderRequest = async () => {
+    //   try {
+    //     // Replace '/api/vi/email/remainder' with your actual API endpoint
+    //     const response = await userService.sendingRemainder();
+    //     console.log('Reminder sent successfully:', response.data);
+    //   } catch (error) {
+    //     console.error('Error sending reminder:', error);
+    //   }
+    // };
+  
+    // useEffect(() => {
+    //   // Send reminder request immediately when the component mounts
+    //   console.log("Effect is running");  // Add this line
+    //   sendReminderRequest();
+  
+    //   // Set up an interval to send reminder every 5 minutes (300,000 milliseconds)
+    //   const intervalId = setInterval(() => {
+    //     sendReminderRequest();
+    //   }, 2 * 60 * 1000);
+  
+    //   // Clean up the interval when the component is unmounted
+    //   return () => clearInterval(intervalId);
+    // }, []); // Empty dependency array ensures the effect runs only once on mount
+
+ 
+
+
 
     const scrollToSection = (elementRef) => {
         window.scrollTo({
