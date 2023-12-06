@@ -67,6 +67,7 @@ public class PasswordResetService {
 
         String token = UUID.randomUUID().toString();
 
+
         PasswordToken passToken = PasswordToken.builder()
                 .token(token)
                 .createdAt(LocalDateTime.now())
@@ -74,7 +75,6 @@ public class PasswordResetService {
                 .user(u)
                 .build();
 
-       // passwordTokenService.savePasswordToken(passToken);
 
         String link = "http://localhost:8080/api/v1/reset-password/reset?token=" + token;
         emailSender.send(u.getEmail(),

@@ -19,7 +19,7 @@ function QuoteModal() {
         if(response.data.author === "The Buddha"){
             setQuote("For what shall it profit a man, if he gain the whole world, and suffer the loss of his soul?");
             setAuthor("Jesus Christ")
-            setHashtags("Blessed")
+            setHashtags("IsItWorthIt")
         }else{
             setQuote(response.data.content);
             setAuthor(response.data.author)

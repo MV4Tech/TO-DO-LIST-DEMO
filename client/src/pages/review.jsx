@@ -31,7 +31,7 @@ const Review = () => {
           <h5 className="mb-3">Emily Smantha</h5>
           <h6 style={{fontSize: '20px',color: '#BA68C8'}} className="mb-3">Parent</h6>
           <h6 className="mt-3 align-center align-center _mg-b-lg" style={{ fontSize: '18px' }}>
-            <MDBIcon fas icon="quote-left" className="pe-2" />
+            <MDBIcon fa icon="quote-left" className="pe-2" />
              Being a parent is a full-time job, and staying organized is key to managing the chaos. This to-do list app has been a lifesaver for me. I can create shared lists with my partner for grocery shopping, school events, and household chores.
           </h6>
           <MDBTypography
@@ -39,20 +39,20 @@ const Review = () => {
             className="d-flex justify-content-center mb-0"
           >
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
               <MDBIcon
-                fas
+                fa
                 icon="star-half-alt"
                 size="sm"
                 className="text-warning"
@@ -72,7 +72,7 @@ const Review = () => {
           <h5 className="mb-3">Lisa Cudrow</h5>
           <h6 style={{fontSize: '20px',color: '#BA68C8'}} className=" mb-3">Buisness Owner</h6>
           <h6 className="mt-3 align-center align-center _mg-b-lg" style={{ fontSize: '18px' }}>
-            <MDBIcon fas icon="quote-left" className="pe-2" />
+            <MDBIcon fa icon="quote-left" className="pe-2" />
             "As a small business owner juggling multiple responsibilities, finding the right productivity tool is crucial. 
           </h6>
           <MDBTypography
@@ -80,19 +80,19 @@ const Review = () => {
             className="d-flex justify-content-center mb-0"
           >
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
           </MDBTypography>
         </MDBCol>
@@ -108,7 +108,7 @@ const Review = () => {
           <h5 className="mb-3">John Smith</h5>
           <h6 style={{fontSize: '20px',color: '#BA68C8'}} className="mb-3">Web Developer</h6>
           <h6 className="mt-3 align-center align-center _mg-b-lg" style={{ fontSize: '18px' }}>
-            <MDBIcon fas icon="quote-left" className="pe-2" />
+            <MDBIcon fa icon="quote-left" className="pe-2" />
             "I've tried numerous to-do list apps, but none compare to the simplicity and effectiveness
              of this one. It's become my go-to tool for managing tasks both at work and home. The intuitive interface and quick task entry have significantly boosted my productivity.
           </h6>
@@ -117,19 +117,19 @@ const Review = () => {
             className="d-flex justify-content-center mb-0"
           >
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon fas icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
             <li>
-              <MDBIcon far icon="star" size="sm" className="text-warning" />
+              <MDBIcon fa icon="star" size="sm" className="text-warning" />
             </li>
           </MDBTypography>
         </MDBCol>
