@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/register.css'
 import { useState,useEffect } from 'react'
 import LoginNavbar from './loginNavbar'
-import Choveka from '../assets/images/login_image.jpg'
+import Choveka from '../assets/images/hyper.png'
 import { useNavigate} from 'react-router-dom';
 import authService from '../services/auth-service'
 import Footer from "./dashboard/footer";
@@ -170,7 +170,7 @@ const Register = () => {
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
                     <img src={Choveka}
-                      className="img-fluid rounded" alt="Sample image" />
+                      className="img-fluid rounded-circle p-3" alt="Sample image" />
 
                   </div>
                 </div>

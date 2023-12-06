@@ -17,7 +17,7 @@ public class PasswordResetService {
 
     public String sendMail(){
 
-
+        return null;
 
     }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/login.css";
-import Chasovnika from "../assets/images/login_nova.png";
+import Chasovnika from "../assets/images/qko.png";
 import authService from "../services/auth-service";
 import {  useNavigate } from "react-router-dom";
 import Footer from "./dashboard/footer";
@@ -64,7 +64,7 @@ const submit = async (e) => {
           <div className="card text-black" style={{ borderRadius: '25px' }}>
             <div className="card-body p-md-5">
               <div className="row justify-content-center">
-                <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 mt-5">
 
                   <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign in</p>
 

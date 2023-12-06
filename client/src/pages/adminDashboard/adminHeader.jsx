@@ -51,7 +51,7 @@ const Header = () => {
                   </a>
                 </div>
                 <div className="d-flex">
-                  <a onClick={()=>navigate("/adminPage")}  className="w-50 pr-3 p-2">
+                  <a onClick={()=>navigate("/adminPage")} style={{ cursor: 'pointer' }}  className="w-50 pr-3 p-2">
                     <div className="card border-0 border-bottom-yellow shadow-lg shadow-hover">
                       <div className="card-body text-center">
                         <div className="text-center">
