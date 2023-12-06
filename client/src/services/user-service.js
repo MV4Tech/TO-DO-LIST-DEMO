@@ -83,9 +83,24 @@ import { jwtDecode } from "jwt-decode";
       const accessToken = storageService.retrieveAccessToken();
         return axios.delete(`${SERVER_ADMIN_URL}/delete-user/${id}`, { headers: { Authorization: `Bearer ${accessToken}` } });
         }
-  
+        
 
+      sendChangePasswordQuery(email){
+        return axios.post(SERVER_URL+`api/v1/reset-password/send-reset-email/`+ email)
+      }
 
+      saveNewPassword(requestData) {
+
+        return axios.post(
+          SERVER_URL + `api/v1/reset-password/new-password`,
+          requestData,
+          {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+      }
 
  }
  export default new UserService();

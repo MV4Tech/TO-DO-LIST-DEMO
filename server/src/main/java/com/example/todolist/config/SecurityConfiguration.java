@@ -49,7 +49,7 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/v1/auth/**").permitAll()
+                        auth.requestMatchers("/api/v1/auth/**","/api/v1/reset-password/**").permitAll()
                                 /*
                                 .requestMatchers(DELETE,"/api/v1/admin/**").hasAuthority(USER_DELETE.getPermission())
                                 .requestMatchers(POST,"/api/v1/admin/**").hasAuthority(USER_CREATE.getPermission())

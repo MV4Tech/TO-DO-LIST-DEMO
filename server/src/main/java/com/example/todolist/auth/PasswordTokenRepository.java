@@ -10,5 +10,7 @@ public interface PasswordTokenRepository extends JpaRepository<PasswordToken,Int
 
     Optional<PasswordToken> findByToken(String token);
 
+
+
 }
 

@@ -101,6 +101,19 @@ public class ApiExceptionHandler {
 
     }
 
+    @ExceptionHandler(value = {PasswordAlreadyChangedException.class})
+    ResponseEntity<Object> handlePasswordAlreadyChanged(PasswordAlreadyChangedException e){
+        logger.error("PASSWORD ALREADY CHANGED exception occurred: {}", e.getMessage(),e);
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        ApiException apiException = new ApiException(
+                e.getMessage(),
+                badRequest,
+                ZonedDateTime.now()
+        );
+        return new ResponseEntity<>(apiException, badRequest);
+
+    }
+
 
 
 }
