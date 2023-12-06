@@ -19,6 +19,8 @@ import AdminDashboard from './pages/adminDashboard/adminDashboard';
 import AdminProfile from './pages/adminDashboard/adminProfile';
 import AdminPage from './pages/adminDashboard/adminPage';
 import ForgotPassword from './pages/forgotPassword';
+import PasswordResetForm from './pages/passwordResetForm';
+import { Switch } from '@mui/material';
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -29,9 +31,9 @@ const App = createBrowserRouter(
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="adminLogin" element={<AdminLogin />} />
-            
-           
+           <Route path="reset-password/:token" element={<PasswordResetForm/>} />
           </Route>
+
         </Route>
          {/* <Route element={<AuthGuardWhenLogin />}>*/}
           <Route path="dashboard" element={<Dashboard />} />

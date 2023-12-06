@@ -2,9 +2,7 @@ package com.example.todolist.auth;
 
 import com.example.todolist.user.model.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +10,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
+@Getter
+@Setter
 public class PasswordToken {
 
 
@@ -29,6 +30,8 @@ public class PasswordToken {
 
     @Column(nullable = false)
     private LocalDateTime expiresAt;
+
+    private LocalDateTime confirmedAt;
 
     @ManyToOne
     @JoinColumn(
