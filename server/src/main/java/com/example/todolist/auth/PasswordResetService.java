@@ -47,7 +47,7 @@ public class PasswordResetService {
             throw new IllegalStateException("token expired");
         }
 
-        passwordTokenService.setConfirmedAt(token);
+
         //TODO send a form to the user to fill new password
 
         RedirectView redirectView = new RedirectView();
@@ -75,10 +75,10 @@ public class PasswordResetService {
                 .user(u)
                 .build();
 
-
+        passwordTokenService.savePasswordToken(passToken);
         String link = "http://localhost:8080/api/v1/reset-password/reset?token=" + token;
         emailSender.send(u.getEmail(),
-                buildEmail(u.getUsername(),link));
+                buildEmail(u.getUsername(),link),"Reset Password");
 
         return "email sent";
     }
@@ -104,7 +104,7 @@ public class PasswordResetService {
                 "                  \n" +
                 "                    </td>\n" +
                 "                    <td style=\"font-size:28px;line-height:1.315789474;Margin-top:4px;padding-left:10px\">\n" +
-                "                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">Confirm your email</span>\n" +
+                "                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">Reset your Password</span>\n" +
                 "                    </td>\n" +
                 "                  </tr>\n" +
                 "                </tbody></table>\n" +
@@ -142,7 +142,7 @@ public class PasswordResetService {
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
                 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
                 "        \n" +
-                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Activate Now</a> </p></blockquote>\n Link will expire in 15 minutes. <p>See you soon</p>" +
+                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Please click on the below link to reset your password account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Reset Password</a> </p></blockquote>\n Link will expire in 15 minutes." +
                 "        \n" +
                 "      </td>\n" +
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
@@ -158,6 +158,10 @@ public class PasswordResetService {
     public String updatePassword(PasswordResetRequest request) {
 
       PasswordToken passwordToken =  passwordTokenService.getToken(request.getToken()).get();
+      if(!(passwordToken.getExpiresAt().isAfter(LocalDateTime.now()))){
+          passwordTokenService.setConfirmedAt(request.getToken());
+          throw new PasswordAlreadyChangedException("Token has expired. Please request a new password reset.");
+      }
       if(passwordToken.getConfirmedAt()!=null){
           throw new PasswordAlreadyChangedException("Password is already changed");
       }

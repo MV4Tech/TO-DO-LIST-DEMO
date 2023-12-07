@@ -116,7 +116,7 @@ public class AuthenticationService {
 
             String link = "http://localhost:8080/api/v1/auth/confirm?token=" + registrationToken;
             emailSender.send(user.getEmail(),
-                    buildEmail(user.getUsername(),link));
+                    buildEmail(user.getUsername(),link),"Confirm Email");
             return AuthenticationResponse.builder()
                     .accessToken(jwtToken)
                     .refreshToken(refreshToken)

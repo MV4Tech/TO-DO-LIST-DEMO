@@ -38,22 +38,23 @@ public class EmailService implements EmailSender{
 
     @Override
     @Async
-
-    public void send(String to, String email) {
+    public void send(String to, String email,String subject) {
         try{
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,
                     "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
-            helper.setSubject("Confirm your email");
-            helper.setFrom("marian.valchinov@gmail.com");
+            helper.setSubject(subject);
+            helper.setFrom("ToDoList@tdl.com");
             mailSender.send(mimeMessage);
         }catch(MessagingException e){
             LOGGER.error("failed to send email", e);
             throw new IllegalStateException("failed to send email");
         }
     }
+
+
 
 
     @Scheduled(cron = "0 */2 * * * ?") // Runs every 2 minutes

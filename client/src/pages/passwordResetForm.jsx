@@ -32,7 +32,7 @@ const PasswordResetForm = () => {
   const handleFormSubmit = async(e) => {
     if (credentialsRequest.newPassword !== credentialsRequest.confirmNewPassword) {
       // Handle password mismatch, display an error message or prevent submission
-      console.error("Passwords do not match");
+      setMessage("Passwords do not Match")
       return;
     }
     e.preventDefault();
@@ -45,7 +45,7 @@ const PasswordResetForm = () => {
       setMessage(response.data);
 	  setLoading(false);
     } catch (e) {
-      console.log(e);
+      setMessage(e.response.data.message);
     }
   };
   
