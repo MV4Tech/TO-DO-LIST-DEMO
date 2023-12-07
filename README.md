@@ -11,7 +11,7 @@ Insert gif or link to demo
 
 ## DB Schema
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Database Schema](![DatabaseReverseEngineer](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/3b748de0-2207-41b8-a0fa-a1366c05a512))
 
 ## Package Structure
 
