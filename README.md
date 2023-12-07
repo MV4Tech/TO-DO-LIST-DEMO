@@ -14,8 +14,12 @@ Insert gif or link to demo
 ![Database Schema](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/3b748de0-2207-41b8-a0fa-a1366c05a512)
 
 ## Package Structure
-
+- InteliJ Idea Backend
+  
 ![InteliJ Idea Backend](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/7f10e5b4-23aa-494d-9c53-540db8a65b62)
+
+- Visual Studi code Frontend
+  
 ![Visual Studi code Frontend](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/d8cc0e83-335a-4fcd-8206-f724fd593b16)
 
 ## Features
