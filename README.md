@@ -4,9 +4,48 @@
 This is an advanced full-stack Spring and React Vite project with MySQL integration provides a comprehensive task management system with features like user authentication, task creation, and management, along with motivational quotes for user encouragement. It includes advanced functionalities such as deadline reminders via email, user-specific profiles for password and username modification, and an admin interface for user management. Ideal for individuals or teams seeking a robust task management solution with added motivational and administrative features.
 
 
+
 ## Demo
 
-Insert gif or link to demo
+ - Main Page
+   
+![main_page](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/59b48e37-13fc-4e31-add5-22e31b8d1449)
+
+ - Register, Login
+
+![register_login](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/4848d593-daa1-4e3b-9989-58374d90d201)
+
+ - Reminder
+
+![reminder](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/ebff39b4-ec3b-40ea-8f32-99561d843560)
+
+ - Delete, Resolved Task
+
+   ![delete_resolved](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/c4ea9f88-5bf9-46ed-9d4f-010f5dc5a971)
+
+ - Task table configuration
+
+   ![task_custom](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/5eb31e1c-7e9d-42d2-afe6-e0718c1722b1)
+
+  - Quotes
+
+  ![quotes](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/b81a5fd9-ecce-4f2d-badc-cdc166a2f193)
+
+ - Logout
+
+ ![logout_password_username](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/f1f97baf-9474-44dd-8f33-e2f829ae2783)
+
+ - Reset(Forgot) Password
+
+![reset_password](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/2a532d3b-7e99-4738-b443-ca5df72bf433)
+
+ - Admin Dashboard
+
+   ![admin_page](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/86485c97-fb54-4961-a709-c3a06b370989)
+
+ - Admin Delete user
+
+![admin_delete](https://github.com/MV4Tech/TO-DO-LIST-DEMO/assets/94450915/e239dd40-4720-4c1a-bf77-869411233080)
 
 
 ## DB Schema
