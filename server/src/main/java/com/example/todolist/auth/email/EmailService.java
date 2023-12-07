@@ -104,7 +104,7 @@ public class EmailService implements EmailSender{
                                     "utf-8");
                             helper.setText(email, true);
                             helper.setTo(to);
-                            helper.setSubject("Important: Your Task Deadline is Approaching");
+                            helper.setSubject("Important: Your Task Deadline is Approaching 1 Day Left!");
                             helper.setFrom("marian.valchinov@gmail.com");
                             mailSender.send(mimeMessage);
                             currentTask.setIsEmailRemainderSent(true);
@@ -129,7 +129,7 @@ public class EmailService implements EmailSender{
                                     "utf-8");
                             helper.setText(email, true);
                             helper.setTo(to);
-                            helper.setSubject("Important: Your Task Deadline is Approaching");
+                            helper.setSubject("Important: Your Task Deadline is Approaching 1 Hour Left!");
                             helper.setFrom("marian.valchinov@gmail.com");
                             mailSender.send(mimeMessage);
                             currentTask.setIsEmailRemainderSent(true);
