@@ -127,7 +127,9 @@ useEffect(() => {
        try{
 
         const response = await UserService.changeUsername(changeUsername);
-       
+        alert("Profile Update\nYou have successfully changed your username. For the changes to take effect, please log out of your current session and log back in with your new username. This ensures that all features and settings are updated accordingly.\nThank you for your cooperation!")
+        storageService.deleteUserData(); 
+        navigate("/login");
         
         
 
