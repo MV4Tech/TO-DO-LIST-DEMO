@@ -101,7 +101,7 @@ const submit = async (e) => {
                       <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/register")}>Sign up here</a>
                       </div>
                       <div className="form-check d-flex justify-content-center mb-5">Forget Password?&nbsp;
-                      <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/forgotPassword")}>Reset Password</a>
+                      <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/forgotPassword")}>Reset password</a>
                       </div>
 
                     <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">

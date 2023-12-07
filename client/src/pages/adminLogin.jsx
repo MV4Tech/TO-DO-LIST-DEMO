@@ -95,10 +95,14 @@ const AdminLogin = () => {
 
                       
                       
-
+                      <div className="form-check d-flex justify-content-center mb-4 mt-4">Forget Password?&nbsp;
+                      <a className="pe-auto" style={{ cursor: 'pointer' }} onClick={() => navigate("/adminForgotPassword")}>Reset password</a>
+                      </div>
                     <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="sumbit" className="btn btn-primary btn-lg mt-5">Login</button>
+                      
+                      <button type="sumbit" className="btn btn-primary btn-lg mt-1">Login</button>
                     </div>
+                    
 
                   </form>
                   {invalidCredentialsMessage && <p style={{ color: 'red' }}>{invalidCredentialsMessage}</p>}

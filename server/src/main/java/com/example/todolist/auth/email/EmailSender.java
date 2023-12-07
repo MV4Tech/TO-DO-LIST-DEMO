@@ -10,7 +10,7 @@ import java.security.Principal;
 
 public interface EmailSender {
 
-    public void send(String to, String email);
+    public void send(String to, String email,String subject);
 
   //  void sendRemainder(Principal connectedUser);
 }
