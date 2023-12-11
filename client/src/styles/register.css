@@ -1,0 +1,121 @@
+body {
+    background-image: url('images/login_pg.webp');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center center; /* Center the image horizontally and vertically */
+    background-attachment: fixed; /* Fixed background image */
+    background-repeat: no-repeat;
+}
+
+.css-grid{
+    display: grid;
+    grid-template-columns: 1200px;
+
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    
+}
+.header-text{
+  
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
+    padding-bottom: 40px;
+    margin-top: 40px;
+}
+
+.login-menu{
+    background-color: #fcfaa3;
+    
+}
+.end{
+    background-color: lightblue;
+}
+
+.image-register-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.image-container {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    background-color: lightblue;
+}
+
+.login_image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* Remove any extra spacing around the image */
+}
+.inputs{
+   padding-top: 80px;
+   width: 300px;
+   
+}
+
+/* Add your preferred styling for the input fields here */
+.input-container {
+    margin-bottom: 20px;
+}
+
+.actual-login {
+    background-color: #fcfaa3;
+    text-align: center; /* Center input fields horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center input fields vertically */
+    height: 100%; /* Ensure the div takes the full height of its parent */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+::placeholder {
+  color: rgb(179, 173, 173);
+  opacity: 1; /* Firefox */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-size: 16px;
+    background-color: #373535;
+    color: white;
+}
+
+input[type="submit"] {
+    background-color: #373535;
+    color: #fff;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 35px;
+    transition: background-color 0.3s, transform 0.2s; /* Add transition effects */
+}
+/* Change button background color and add a scale effect on hover */
+input[type="submit"]:hover {
+    background-color: #000000; /* Change background color on hover */
+    transform: scale(1.05); /* Slight scale increase on hover */
+}
+/* Style the sign-in link */
+.input-container a {
+    color: #373535; /* Change link color */
+    font-weight: bold; /* Make the text bold */
+    margin-right: 0px; /* Add some spacing to the right of the link */
+    transition: color 0.5s; /* Add a color transition effect */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Change link color on hover */
+.input-container a:hover {
+    color: #000000f6;
+}

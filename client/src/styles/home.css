@@ -1,0 +1,70 @@
+h2 {
+  font-size: 3em;
+  font-family: var(--font-family-poppins,"Poppins");
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 45px;
+  letter-spacing: -2px;
+}
+  .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 300px;
+    margin: 0;
+    
+  }
+  
+  .header-logo{
+    width: 200px;
+  
+  }
+  .logo{
+    height: 100px;
+  }
+  
+  .header-main-text{
+    width: 500px;
+    font-size: 80px;
+    align-self: end;
+    font-family: Rasa;
+    min-width: 550px;
+  
+  }
+  
+  .header-login{
+    width: 200px;
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .login-logo{
+    margin-top: 15px;
+    margin-right: 5px;
+    height: 20px;
+  
+  }
+  
+  .login-text{
+    margin-top: 30px;
+    font-size: 24px;
+  }
+  
+  .start-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 70px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+  
+  .circle{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    margin-top: 105px;
+  }
+
