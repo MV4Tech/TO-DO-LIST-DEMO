@@ -1,4 +1,4 @@
-
+ 
 # To Do List
 
 This is an advanced full-stack Spring and React Vite project with MySQL integration provides a comprehensive task management system with features like user authentication, task creation, and management, along with motivational quotes for user encouragement. It includes advanced functionalities such as deadline reminders via email, user-specific profiles for password and username modification, and admin interface for user management. Ideal for individuals or teams seeking a robust task management solution with added motivational and administrative features.
