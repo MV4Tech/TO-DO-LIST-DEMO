@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/register.css'
+//import '../styles/register.css'
 import { useState,useEffect } from 'react'
 import LoginNavbar from './loginNavbar'
 import Choveka from '../assets/images/hyper.png'

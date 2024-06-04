@@ -1,22 +1,20 @@
 package com.example.todolist.task.service;
 
-import com.example.todolist.task.model.Task;
-import com.example.todolist.task.repository.TaskRepository;
-import com.example.todolist.token.Token;
-import com.example.todolist.token.TokenType;
-import com.example.todolist.user.model.Role;
-import com.example.todolist.user.model.User;
+import com.example.todolist.model.Task;
+import com.example.todolist.repository.TaskRepository;
+import com.example.todolist.model.Token;
+import com.example.todolist.service.TaskService;
+import com.example.todolist.enums.TokenType;
+import com.example.todolist.enums.Role;
+import com.example.todolist.model.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.util.Assert;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -25,9 +23,7 @@ import java.util.Optional;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class TaskServiceTest {

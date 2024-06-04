@@ -1,16 +1,14 @@
 package com.example.todolist.user.repository;
 
-import com.example.todolist.task.model.Task;
-import com.example.todolist.user.model.User;
-import jakarta.transaction.Transactional;
+import com.example.todolist.repository.UserRepository;
+import com.example.todolist.model.User;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import com.example.todolist.user.model.Role;
+import com.example.todolist.enums.Role;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

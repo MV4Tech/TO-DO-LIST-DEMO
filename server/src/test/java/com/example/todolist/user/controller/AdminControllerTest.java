@@ -1,11 +1,12 @@
 package com.example.todolist.user.controller;
 
 import com.example.todolist.config.JwtService;
-import com.example.todolist.token.Token;
-import com.example.todolist.token.TokenType;
-import com.example.todolist.user.model.Role;
-import com.example.todolist.user.model.User;
-import com.example.todolist.user.service.UserService;
+import com.example.todolist.controller.AdminController;
+import com.example.todolist.model.Token;
+import com.example.todolist.enums.TokenType;
+import com.example.todolist.enums.Role;
+import com.example.todolist.model.User;
+import com.example.todolist.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
