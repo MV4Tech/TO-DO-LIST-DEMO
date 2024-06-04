@@ -1,11 +1,11 @@
 package com.example.todolist.user.service;
 
-import com.example.todolist.user.model.Role;
-import com.example.todolist.user.model.User;
-import com.example.todolist.user.repository.UserRepository;
+import com.example.todolist.enums.Role;
+import com.example.todolist.model.User;
+import com.example.todolist.repository.UserRepository;
+import com.example.todolist.service.UserService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

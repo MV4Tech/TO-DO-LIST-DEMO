@@ -1,6 +1,6 @@
 package com.example.todolist.config;
 
-import com.example.todolist.token.TokenRepository;
+import com.example.todolist.repository.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;

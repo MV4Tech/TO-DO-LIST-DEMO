@@ -1,11 +1,12 @@
 package com.example.todolist.task.repository;
 
-import com.example.todolist.task.model.Task;
-import com.example.todolist.token.Token;
-import com.example.todolist.token.TokenType;
-import com.example.todolist.user.model.Role;
-import com.example.todolist.user.model.User;
-import com.example.todolist.user.repository.UserRepository;
+import com.example.todolist.repository.TaskRepository;
+import com.example.todolist.model.Task;
+import com.example.todolist.model.Token;
+import com.example.todolist.enums.TokenType;
+import com.example.todolist.enums.Role;
+import com.example.todolist.model.User;
+import com.example.todolist.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

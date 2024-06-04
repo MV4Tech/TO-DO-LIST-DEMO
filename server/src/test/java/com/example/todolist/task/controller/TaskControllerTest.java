@@ -1,15 +1,15 @@
 package com.example.todolist.task.controller;
 
 import com.example.todolist.config.JwtService;
-import com.example.todolist.task.model.Task;
-import com.example.todolist.task.service.TaskService;
-import com.example.todolist.token.Token;
-import com.example.todolist.token.TokenType;
-import com.example.todolist.user.model.Role;
-import com.example.todolist.user.model.User;
+import com.example.todolist.controller.TaskController;
+import com.example.todolist.model.Task;
+import com.example.todolist.service.TaskService;
+import com.example.todolist.model.Token;
+import com.example.todolist.enums.TokenType;
+import com.example.todolist.enums.Role;
+import com.example.todolist.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -24,7 +24,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
